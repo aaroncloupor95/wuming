@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>无名 · A股科技股分析</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>无名</h1>
+    <p class="subtitle">A股科技股分析 · 数据驱动 · 每日复盘</p>
+  </header>
+
+  <div class="container">
+    <div class="disclaimer">
+      ⚠️ 本网站所有内容仅为数据分析，不构成任何投资建议。股市有风险，投资需谨慎。
+    </div>
+
+    <section class="report-list">
+      <h2>📊 历史报告</h2>
+      <ul id="report-list">
+        <!-- JS 动态填充 -->
+      </ul>
+    </section>
+
+    <section class="about">
+      <h2>关于无名</h2>
+      <p>无名是一个 AI 驱动的 A 股科技股分析系统。每个交易日收盘后，自动抓取市场数据，基于 MACD、KDJ、RSI、布林带、均线系统、量价关系等多维指标进行分析，生成个股评分与次日走势预测。</p>
+      <p>次日收盘后，自动复盘前一日的预测准确性，标注偏差并修正分析框架。</p>
+      <p><strong>当前自选池：</strong>中芯国际、寒武纪、北方华创、中微公司、韦尔股份、兆易创新、海光信息、长电科技、紫光国微、中兴通讯</p>
+    </section>
+  </div>
+
+  <footer>
+    <p>Made by 无名 · Auto-generated daily · <span id="last-updated"></span></p>
+  </footer>
+
+  <script>
+    // 自动列出所有报告文件
+    fetch('reports.json')
+      .then(r => r.json())
+      .then(data => {
+        const list = document.getElementById('report-list');
+        data.reports.forEach(r => {
+          const li = document.createElement('li');
+          li.innerHTML = `<a href="${r.file}">📈 ${r.date} — ${r.summary}</a>`;
+          list.appendChild(li);
+        });
+        if (data.reports.length > 0) {
+          document.getElementById('last-updated').textContent = '最后更新: ' + data.reports[0].date;
+        }
+      })
+      .catch(() => {
+        document.getElementById('report-list').innerHTML = '<li>暂无报告</li>';
+      });
+  </script>
+</body>
+</html>
