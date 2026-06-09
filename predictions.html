@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>真实预测 · 无名</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .pred-card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 16px; margin: 16px 0; }
+    .pred-date { font-size: 14px; color: #8b949e; margin-bottom: 12px; }
+    .pred-stocks { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+    .pred-stock { background: #0d1117; border: 1px solid #21262d; border-radius: 6px; padding: 12px; }
+    .pred-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .pred-header .code { font-family: monospace; font-size: 13px; color: #8b949e; }
+    .pred-header .name { font-weight: 600; }
+    .pred-header .dir { font-weight: 700; font-size: 16px; }
+    .badge-signal { background: #da3633; color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 11px; }
+    .badge-neutral { background: #30363d; color: #8b949e; padding: 2px 8px; border-radius: 4px; font-size: 11px; }
+    .pred-details { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 12px; font-size: 13px; color: #c9d1d9; }
+    .pred-result { margin-top: 8px; padding-top: 8px; border-top: 1px solid #21262d; font-size: 13px; display: grid; grid-template-columns: 1fr 1fr; gap: 4px 12px; }
+    .correct { color: #3fb950; font-weight: 700; }
+    .wrong { color: #f85149; font-weight: 700; }
+    .archived { opacity: 0.85; }
+    .status-banner { background: #1a2332; border: 1px solid #30363d; border-radius: 8px; padding: 12px 16px; margin-bottom: 16px; }
+    .status-active { color: #3fb950; font-weight: 700; }
+    .nav-tabs { display: flex; gap: 8px; margin-bottom: 16px; }
+    .nav-tab { padding: 8px 16px; background: #21262d; border: none; border-radius: 6px; color: #c9d1d9; cursor: pointer; font-size: 14px; }
+    .nav-tab.active { background: #1f6feb; color: #fff; }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="index.html" style="color:inherit;text-decoration:none;">无名</a></h1>
+    <p class="subtitle">真实预测追踪 · 预测→验证→归档</p>
+  </header>
+  <div class="container">
+    <div class="disclaimer">
+      ⚠️ 本页面为模型真实预测记录，不构成投资建议。每笔预测在下个交易日收盘后自动归档验证。
+    </div>
+
+    <div class="status-banner">
+      活跃预测: <span class="status-active">1</span> 组 | 
+      历史归档: <strong>0</strong> 组 | 
+      最近更新: 2026-06-10
+    </div>
+
+    <div class="nav-tabs">
+      <button class="nav-tab active" onclick="showTab('active')">🔮 当前预测</button>
+      <button class="nav-tab" onclick="showTab('history')">📋 历史归档</button>
+    </div>
+
+    <div id="active" class="tab-content active">
+      <h2>🔮 当前预测</h2>
+      <div class="pred-card">
+  <div class="pred-date">📅 预测日期: 2026-06-10 → 目标: 2026-06-11</div>
+  <div class="pred-stocks">
+    <div class="pred-stock">
+      <div class="pred-header">
+        <span class="code">603228</span>
+        <span class="name">景旺电子</span>
+        <span class="dir" style="color:#3fb950">↑ UP</span>
+        <span class="badge-neutral">无信号</span>
+      </div>
+      <div class="pred-details">
+        <div>收盘 ¥72.21</div>
+        <div>置信度 52%</div>
+        <div>支撑 ¥70.04</div>
+        <div>阻力 ¥75.82</div>
+        <div>RSI 46</div>
+        <div>得分 +0.378</div>
+      </div>
+    </div>
+    <div class="pred-stock">
+      <div class="pred-header">
+        <span class="code">300136</span>
+        <span class="name">信维通信</span>
+        <span class="dir" style="color:#f85149">↓ DOWN</span>
+        <span class="badge-neutral">无信号</span>
+      </div>
+      <div class="pred-details">
+        <div>收盘 ¥103.00</div>
+        <div>置信度 50%</div>
+        <div>支撑 ¥98.88</div>
+        <div>阻力 ¥109.18</div>
+        <div>RSI 43</div>
+        <div>得分 -0.052</div>
+      </div>
+    </div>
+    <div class="pred-stock">
+      <div class="pred-header">
+        <span class="code">002913</span>
+        <span class="name">奥士康</span>
+        <span class="dir" style="color:#3fb950">↑ UP</span>
+        <span class="badge-neutral">无信号</span>
+      </div>
+      <div class="pred-details">
+        <div>收盘 ¥52.28</div>
+        <div>置信度 52%</div>
+        <div>支撑 ¥50.19</div>
+        <div>阻力 ¥54.89</div>
+        <div>RSI 46</div>
+        <div>得分 +0.361</div>
+      </div>
+    </div>
+    <div class="pred-stock">
+      <div class="pred-header">
+        <span class="code">002050</span>
+        <span class="name">三花智控</span>
+        <span class="dir" style="color:#f85149">↓ DOWN</span>
+        <span class="badge-neutral">无信号</span>
+      </div>
+      <div class="pred-details">
+        <div>收盘 ¥47.49</div>
+        <div>置信度 50%</div>
+        <div>支撑 ¥45.59</div>
+        <div>阻力 ¥49.86</div>
+        <div>RSI 41</div>
+        <div>得分 -0.087</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    </div>
+
+    <div id="history" class="tab-content">
+      <h2>📋 历史归档</h2>
+      <p style="color:#8b949e">暂无归档记录。预测将在下个交易日收盘后自动归档。</p>
+    </div>
+
+    <footer>
+      <p>无名 · 预测归档系统 · 自动验证</p>
+    </footer>
+  </div>
+  <script>
+    function showTab(name) {
+      document.querySelectorAll('.tab-content').forEach(e => e.classList.remove('active'));
+      document.querySelectorAll('.nav-tab').forEach(e => e.classList.remove('active'));
+      document.getElementById(name).classList.add('active');
+      event.target.classList.add('active');
+    }
+  </script>
+</body>
+</html>

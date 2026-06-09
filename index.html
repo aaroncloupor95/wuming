@@ -4,66 +4,39 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>无名 · A股科技股分析</title>
+  <link rel="stylesheet" href="style.css">
   <style>
-:root {
-  --bg: #0d1117; --card-bg: #161b22; --border: #30363d;
-  --text: #c9d1d9; --muted: #8b949e; --accent: #58a6ff;
-  --up: #3fb950; --down: #f85149;
-}
-* { margin:0; padding:0; box-sizing:border-box; }
-body { background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; line-height:1.6; }
-header { background:var(--card-bg); border-bottom:1px solid var(--border); padding:1.5rem 2rem; text-align:center; }
-header h1 { font-size:2rem; }
-.subtitle { color:var(--muted); }
-.container { max-width:800px; margin:0 auto; padding:2rem; }
-h2 { border-bottom:1px solid var(--border); padding-bottom:0.5rem; margin:1.5rem 0 1rem; }
-ul { list-style:none; padding:0; }
-li { padding:0.4rem 0; border-bottom:1px solid var(--border); }
-li a { color:var(--accent); text-decoration:none; font-size:1.1rem; }
-li a:hover { text-decoration:underline; }
-.mini-card { background:var(--card-bg); border:1px solid var(--border); border-radius:6px; padding:0.6rem 1rem; margin:0.4rem 0; display:flex; align-items:center; gap:0.5rem; }
-.mini-card strong { margin-right:auto; }
-.up { color:var(--up); font-weight:700; }
-.down { color:var(--down); font-weight:700; }
-footer { text-align:center; padding:2rem; color:var(--muted); font-size:0.85rem; border-top:1px solid var(--border); margin-top:3rem; }
+    .quick-links { display: flex; gap: 12px; margin: 16px 0; }
+    .quick-link { background: #1f6feb; color: #fff; padding: 10px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; }
+    .quick-link:hover { background: #388bfd; }
+    .quick-link.secondary { background: #21262d; }
+    .quick-link.secondary:hover { background: #30363d; }
   </style>
 </head>
 <body>
   <header>
     <h1>无名</h1>
-    <p class="subtitle">A股科技股分析 · 数据驱动 · 逐日进化 · 非投资建议</p>
+    <p class="subtitle">A股科技股量化分析 · 个性化模型 · 每日更新</p>
   </header>
-
   <div class="container">
-    <h2>📊 最新分析（2026-06-09）</h2>
-    
-      <div class="mini-card">
-        <strong>603228 景旺电子</strong> ¥68.96
-        <span class="up">→涨</span>
-      </div>
-      <div class="mini-card">
-        <strong>300136 信维通信</strong> ¥103.65
-        <span class="up">→涨</span>
-      </div>
-      <div class="mini-card">
-        <strong>002913 奥士康</strong> ¥50.57
-        <span class="up">→涨</span>
-      </div>
-      <div class="mini-card">
-        <strong>002050 三花智控</strong> ¥47.38
-        <span class="up">→涨</span>
-      </div>
-    <p style="margin-top:1rem;"><a href="2026-06-09.html">查看完整日报 →</a></p>
+    <div class="disclaimer">
+      ⚠️ 本网站所有内容仅为数据分析与模型实验，不构成任何投资建议。股市有风险，投资需谨慎。
+    </div>
 
-    <h2>📅 历史日报</h2>
-    <ul>
-      <li><a href="2026-06-09.html">2026-06-09 · 日报</a></li>
-      <li><a href="2026-06-08.html">2026-06-08 · 日报</a></li>
+    <div class="quick-links">
+      <a href="predictions.html" class="quick-link">🔮 真实预测追踪</a>
+      <a href="2026-06-10.html" class="quick-link secondary">📊 最新日报</a>
+    </div>
+
+    <h2>📅 日报存档</h2>
+    <ul class="report-list">
+      <li><a href="2026-06-10.html">2026-06-10 日报</a></li>
+      <li><a href="2026-06-09.html">2026-06-09 日报</a></li>
+      <li><a href="2026-06-08.html">2026-06-08 日报</a></li>
     </ul>
+    <footer>
+      <p>数据来源：新浪财经公开接口 | 仅供研究</p>
+    </footer>
   </div>
-
-  <footer>
-    <p>无名 · 2026-06-09</p>
-  </footer>
 </body>
 </html>
