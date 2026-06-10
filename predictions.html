@@ -1,146 +1,56 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>真实预测 · 无名</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    .pred-card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 16px; margin: 16px 0; }
-    .pred-date { font-size: 14px; color: #8b949e; margin-bottom: 12px; }
-    .pred-stocks { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
-    .pred-stock { background: #0d1117; border: 1px solid #21262d; border-radius: 6px; padding: 12px; }
-    .pred-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
-    .pred-header .code { font-family: monospace; font-size: 13px; color: #8b949e; }
-    .pred-header .name { font-weight: 600; }
-    .pred-header .dir { font-weight: 700; font-size: 16px; }
-    .badge-signal { background: #da3633; color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 11px; }
-    .badge-neutral { background: #30363d; color: #8b949e; padding: 2px 8px; border-radius: 4px; font-size: 11px; }
-    .pred-details { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 12px; font-size: 13px; color: #c9d1d9; }
-    .pred-result { margin-top: 8px; padding-top: 8px; border-top: 1px solid #21262d; font-size: 13px; display: grid; grid-template-columns: 1fr 1fr; gap: 4px 12px; }
-    .correct { color: #3fb950; font-weight: 700; }
-    .wrong { color: #f85149; font-weight: 700; }
-    .archived { opacity: 0.85; }
-    .status-banner { background: #1a2332; border: 1px solid #30363d; border-radius: 8px; padding: 12px 16px; margin-bottom: 16px; }
-    .status-active { color: #3fb950; font-weight: 700; }
-    .nav-tabs { display: flex; gap: 8px; margin-bottom: 16px; }
-    .nav-tab { padding: 8px 16px; background: #21262d; border: none; border-radius: 6px; color: #c9d1d9; cursor: pointer; font-size: 14px; }
-    .nav-tab.active { background: #1f6feb; color: #fff; }
-    .tab-content { display: none; }
-    .tab-content.active { display: block; }
-  </style>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>预测追踪 — A股科技股分析</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1><a href="index.html" style="color:inherit;text-decoration:none;">无名</a></h1>
-    <p class="subtitle">真实预测追踪 · 预测→验证→归档</p>
-  </header>
-  <div class="container">
-    <div class="disclaimer">
-      ⚠️ 本页面为模型真实预测记录，不构成投资建议。每笔预测在下个交易日收盘后自动归档验证。
-    </div>
-
-    <div class="status-banner">
-      活跃预测: <span class="status-active">1</span> 组 | 
-      历史归档: <strong>0</strong> 组 | 
-      最近更新: 2026-06-10
-    </div>
-
-    <div class="nav-tabs">
-      <button class="nav-tab active" onclick="showTab('active')">🔮 当前预测</button>
-      <button class="nav-tab" onclick="showTab('history')">📋 历史归档</button>
-    </div>
-
-    <div id="active" class="tab-content active">
-      <h2>🔮 当前预测</h2>
-      <div class="pred-card">
-  <div class="pred-date">📅 预测日期: 2026-06-10 → 目标: 2026-06-11</div>
-  <div class="pred-stocks">
-    <div class="pred-stock">
-      <div class="pred-header">
-        <span class="code">603228</span>
-        <span class="name">景旺电子</span>
-        <span class="dir" style="color:#3fb950">↑ UP</span>
-        <span class="badge-neutral">无信号</span>
-      </div>
-      <div class="pred-details">
-        <div>收盘 ¥72.21</div>
-        <div>置信度 52%</div>
-        <div>支撑 ¥70.04</div>
-        <div>阻力 ¥75.82</div>
-        <div>RSI 46</div>
-        <div>得分 +0.378</div>
-      </div>
-    </div>
-    <div class="pred-stock">
-      <div class="pred-header">
-        <span class="code">300136</span>
-        <span class="name">信维通信</span>
-        <span class="dir" style="color:#f85149">↓ DOWN</span>
-        <span class="badge-neutral">无信号</span>
-      </div>
-      <div class="pred-details">
-        <div>收盘 ¥103.00</div>
-        <div>置信度 50%</div>
-        <div>支撑 ¥98.88</div>
-        <div>阻力 ¥109.18</div>
-        <div>RSI 43</div>
-        <div>得分 -0.052</div>
-      </div>
-    </div>
-    <div class="pred-stock">
-      <div class="pred-header">
-        <span class="code">002913</span>
-        <span class="name">奥士康</span>
-        <span class="dir" style="color:#3fb950">↑ UP</span>
-        <span class="badge-neutral">无信号</span>
-      </div>
-      <div class="pred-details">
-        <div>收盘 ¥52.28</div>
-        <div>置信度 52%</div>
-        <div>支撑 ¥50.19</div>
-        <div>阻力 ¥54.89</div>
-        <div>RSI 46</div>
-        <div>得分 +0.361</div>
-      </div>
-    </div>
-    <div class="pred-stock">
-      <div class="pred-header">
-        <span class="code">002050</span>
-        <span class="name">三花智控</span>
-        <span class="dir" style="color:#f85149">↓ DOWN</span>
-        <span class="badge-neutral">无信号</span>
-      </div>
-      <div class="pred-details">
-        <div>收盘 ¥47.49</div>
-        <div>置信度 50%</div>
-        <div>支撑 ¥45.59</div>
-        <div>阻力 ¥49.86</div>
-        <div>RSI 41</div>
-        <div>得分 -0.087</div>
-      </div>
-    </div>
-  </div>
+<nav class="navbar">
+  <a href="index.html" class="navbar-brand"><span class="logo">📊</span>A股科技股分析</a>
+  <ul class="navbar-links">
+    <li><a href="index.html">首页</a></li>
+    <li><a href="predictions.html" class="active" >今日日报</a></li>
+    <li><a href="predictions.html" class="active">预测追踪<span class="navbar-badge">NEW</span></a></li>
+  </ul>
+</nav>
+<div class="container">
+<div class="disclaimer">⚠️ 本报告仅为数据分析与量化模型输出，不构成任何投资建议。投资有风险，入市需谨慎。</div>
+<div class="page-header">
+  <h1>📈 预测追踪<span class="version-tag">v3.0</span></h1>
+  <div class="subtitle">d1/d3/d5 三层预测追踪 · 活跃预测 + 历史复盘</div>
 </div>
 
-    </div>
+<div class="tabs">
+  <button class="tab-btn active" onclick="switchTab('active')">📌 活跃预测 (1)</button>
+  <button class="tab-btn" onclick="switchTab('archived')">📋 历史归档 (1)</button>
+</div>
 
-    <div id="history" class="tab-content">
-      <h2>📋 历史归档</h2>
-      <p style="color:#8b949e">暂无归档记录。预测将在下个交易日收盘后自动归档。</p>
-    </div>
+<div id="tab-active" class="tab-content">
+  <table class="data-table">
+    <thead><tr><th>日期</th><th>代码</th><th>名称</th><th>周期</th><th>方向</th><th>预测价</th><th>评分</th><th>置信</th></tr></thead>
+    <tbody><tr class="h-up"><td>2026-06-10</td><td class="stock-code" style="font-size:.78rem">002913</td><td>奥士康</td><td class="h-label">d1</td><td><span class="signal-dot up"></span>📈 UP ⚡</td><td>52.28</td><td class="h-score">+3.70</td><td>95%</td></tr><tr class="h-neutral"><td>2026-06-10</td><td class="stock-code" style="font-size:.78rem">002913</td><td>奥士康</td><td class="h-label">d3</td><td><span class="signal-dot neutral"></span>➖ NEUTRAL —</td><td>52.28</td><td class="h-score">+0.92</td><td>73%</td></tr><tr class="h-down"><td>2026-06-10</td><td class="stock-code" style="font-size:.78rem">002913</td><td>奥士康</td><td class="h-label">d5</td><td><span class="signal-dot down"></span>📉 DOWN ⚡</td><td>52.28</td><td class="h-score">-2.62</td><td>95%</td></tr><tr class="h-down"><td>2026-06-10</td><td class="stock-code" style="font-size:.78rem">002050</td><td>三花智控</td><td class="h-label">d1</td><td><span class="signal-dot down"></span>📉 DOWN ⚡</td><td>47.49</td><td class="h-score">-2.23</td><td>95%</td></tr><tr class="h-neutral"><td>2026-06-10</td><td class="stock-code" style="font-size:.78rem">002050</td><td>三花智控</td><td class="h-label">d3</td><td><span class="signal-dot neutral"></span>➖ NEUTRAL —</td><td>47.49</td><td class="h-score">-0.66</td><td>72%</td></tr><tr class="h-down"><td>2026-06-10</td><td class="stock-code" style="font-size:.78rem">002050</td><td>三花智控</td><td class="h-label">d5</td><td><span class="signal-dot down"></span>📉 DOWN ⚡</td><td>47.49</td><td class="h-score">-4.04</td><td>95%</td></tr><tr class="h-up"><td>2026-06-10</td><td class="stock-code" style="font-size:.78rem">603228</td><td>景旺电子</td><td class="h-label">d1</td><td><span class="signal-dot up"></span>📈 UP ⚡</td><td>72.21</td><td class="h-score">+4.36</td><td>95%</td></tr><tr class="h-neutral"><td>2026-06-10</td><td class="stock-code" style="font-size:.78rem">603228</td><td>景旺电子</td><td class="h-label">d3</td><td><span class="signal-dot neutral"></span>➖ NEUTRAL —</td><td>72.21</td><td class="h-score">+1.13</td><td>78%</td></tr><tr class="h-down"><td>2026-06-10</td><td class="stock-code" style="font-size:.78rem">603228</td><td>景旺电子</td><td class="h-label">d5</td><td><span class="signal-dot down"></span>📉 DOWN ⚡</td><td>72.21</td><td class="h-score">-4.35</td><td>95%</td></tr><tr class="h-down"><td>2026-06-10</td><td class="stock-code" style="font-size:.78rem">300136</td><td>信维通信</td><td class="h-label">d1</td><td><span class="signal-dot down"></span>📉 DOWN ⚡</td><td>103.00</td><td class="h-score">-3.36</td><td>95%</td></tr><tr class="h-down"><td>2026-06-10</td><td class="stock-code" style="font-size:.78rem">300136</td><td>信维通信</td><td class="h-label">d3</td><td><span class="signal-dot down"></span>📉 DOWN ⚡</td><td>103.00</td><td class="h-score">-2.21</td><td>95%</td></tr><tr class="h-down"><td>2026-06-10</td><td class="stock-code" style="font-size:.78rem">300136</td><td>信维通信</td><td class="h-label">d5</td><td><span class="signal-dot down"></span>📉 DOWN ⚡</td><td>103.00</td><td class="h-score">-4.02</td><td>95%</td></tr></tbody>
+  </table>
+</div>
 
-    <footer>
-      <p>无名 · 预测归档系统 · 自动验证</p>
-    </footer>
-  </div>
-  <script>
-    function showTab(name) {
-      document.querySelectorAll('.tab-content').forEach(e => e.classList.remove('active'));
-      document.querySelectorAll('.nav-tab').forEach(e => e.classList.remove('active'));
-      document.getElementById(name).classList.add('active');
-      event.target.classList.add('active');
-    }
-  </script>
+<div id="tab-archived" class="tab-content" style="display:none">
+  <table class="data-table">
+    <thead><tr><th>日期</th><th>代码</th><th>名称</th><th>周期</th><th>方向</th><th>预测价</th><th>评分</th><th>置信</th><th>实际价</th><th>涨跌</th><th>结果</th></tr></thead>
+    <tbody><tr class="h-?"><td>2026-06-09</td><td class="stock-code" style="font-size:.78rem">603228</td><td>景旺电子</td><td class="h-label">d1</td><td><span class="signal-dot ?"></span>➖ ? —</td><td>72.21</td><td class="h-score">+0.00</td><td>0%</td><td>72.21</td><td>+0.00%</td><td>❌</td></tr><tr class="h-?"><td>2026-06-09</td><td class="stock-code" style="font-size:.78rem">603228</td><td>景旺电子</td><td class="h-label">d3</td><td><span class="signal-dot ?"></span>➖ ? —</td><td>72.21</td><td class="h-score">+0.00</td><td>0%</td><td colspan="3" style="color:var(--text-muted);font-size:.72rem">待3日到期复盘</td></tr><tr class="h-?"><td>2026-06-09</td><td class="stock-code" style="font-size:.78rem">603228</td><td>景旺电子</td><td class="h-label">d5</td><td><span class="signal-dot ?"></span>➖ ? —</td><td>72.21</td><td class="h-score">+0.00</td><td>0%</td><td colspan="3" style="color:var(--text-muted);font-size:.72rem">待5日到期复盘</td></tr><tr class="h-?"><td>2026-06-09</td><td class="stock-code" style="font-size:.78rem">300136</td><td>信维通信</td><td class="h-label">d1</td><td><span class="signal-dot ?"></span>➖ ? —</td><td>103.00</td><td class="h-score">+0.00</td><td>0%</td><td>103.0</td><td>+0.00%</td><td>❌</td></tr><tr class="h-?"><td>2026-06-09</td><td class="stock-code" style="font-size:.78rem">300136</td><td>信维通信</td><td class="h-label">d3</td><td><span class="signal-dot ?"></span>➖ ? —</td><td>103.00</td><td class="h-score">+0.00</td><td>0%</td><td colspan="3" style="color:var(--text-muted);font-size:.72rem">待3日到期复盘</td></tr><tr class="h-?"><td>2026-06-09</td><td class="stock-code" style="font-size:.78rem">300136</td><td>信维通信</td><td class="h-label">d5</td><td><span class="signal-dot ?"></span>➖ ? —</td><td>103.00</td><td class="h-score">+0.00</td><td>0%</td><td colspan="3" style="color:var(--text-muted);font-size:.72rem">待5日到期复盘</td></tr><tr class="h-?"><td>2026-06-09</td><td class="stock-code" style="font-size:.78rem">002913</td><td>奥士康</td><td class="h-label">d1</td><td><span class="signal-dot ?"></span>➖ ? —</td><td>52.28</td><td class="h-score">+0.00</td><td>0%</td><td>52.28</td><td>+0.00%</td><td>❌</td></tr><tr class="h-?"><td>2026-06-09</td><td class="stock-code" style="font-size:.78rem">002913</td><td>奥士康</td><td class="h-label">d3</td><td><span class="signal-dot ?"></span>➖ ? —</td><td>52.28</td><td class="h-score">+0.00</td><td>0%</td><td colspan="3" style="color:var(--text-muted);font-size:.72rem">待3日到期复盘</td></tr><tr class="h-?"><td>2026-06-09</td><td class="stock-code" style="font-size:.78rem">002913</td><td>奥士康</td><td class="h-label">d5</td><td><span class="signal-dot ?"></span>➖ ? —</td><td>52.28</td><td class="h-score">+0.00</td><td>0%</td><td colspan="3" style="color:var(--text-muted);font-size:.72rem">待5日到期复盘</td></tr><tr class="h-?"><td>2026-06-09</td><td class="stock-code" style="font-size:.78rem">002050</td><td>三花智控</td><td class="h-label">d1</td><td><span class="signal-dot ?"></span>➖ ? —</td><td>47.49</td><td class="h-score">+0.00</td><td>0%</td><td>47.49</td><td>+0.00%</td><td>❌</td></tr><tr class="h-?"><td>2026-06-09</td><td class="stock-code" style="font-size:.78rem">002050</td><td>三花智控</td><td class="h-label">d3</td><td><span class="signal-dot ?"></span>➖ ? —</td><td>47.49</td><td class="h-score">+0.00</td><td>0%</td><td colspan="3" style="color:var(--text-muted);font-size:.72rem">待3日到期复盘</td></tr><tr class="h-?"><td>2026-06-09</td><td class="stock-code" style="font-size:.78rem">002050</td><td>三花智控</td><td class="h-label">d5</td><td><span class="signal-dot ?"></span>➖ ? —</td><td>47.49</td><td class="h-score">+0.00</td><td>0%</td><td colspan="3" style="color:var(--text-muted);font-size:.72rem">待5日到期复盘</td></tr></tbody>
+  </table>
+</div>
+
+<div class="footer">
+  <div class="footer-links"><a href="index.html">首页</a><a href="predictions.html">预测追踪</a><a href="2026-06-10.html">今日日报</a></div>
+  <p>数据源: 新浪财经K线API · 模型 v3.0 多层预测 (d1/d3/d5) · 生成: 2026-06-10 12:25</p>
+</div>
+</div>
+<script>
+function switchTab(name) {
+  document.querySelectorAll('.tab-content').forEach(el => el.style.display = 'none');
+  document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+  document.getElementById('tab-' + name).style.display = 'block';
+  event.target.classList.add('active');
+}
+</script>
 </body>
 </html>
