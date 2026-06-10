@@ -1,0 +1,646 @@
+{
+  "meta": {
+    "last_update": "2026-06-10 13:03",
+    "version": "3.0",
+    "stock_count": 4
+  },
+  "stocks": [
+    {
+      "code": "603228",
+      "name": "景旺电子",
+      "type": "mean_reversion",
+      "personality": "均值回归型"
+    },
+    {
+      "code": "300136",
+      "name": "信维通信",
+      "type": "trend_follow",
+      "personality": "趋势跟随型"
+    },
+    {
+      "code": "002913",
+      "name": "奥士康",
+      "type": "mean_reversion_weak",
+      "personality": "均值回归(弱)"
+    },
+    {
+      "code": "002050",
+      "name": "三花智控",
+      "type": "mixed",
+      "personality": "混合型"
+    }
+  ],
+  "daily": {
+    "2026-06-09": {
+      "predictions": [
+        {
+          "code": "603228",
+          "name": "景旺电子",
+          "close": 72.21,
+          "d1": {
+            "direction": "up",
+            "signal": false,
+            "score": 0.3779,
+            "confidence": 51,
+            "support": 70.04,
+            "resistance": 75.82,
+            "rsi": 45.5,
+            "bb_pos": 0.29
+          },
+          "d3": {
+            "direction": "neutral",
+            "signal": false,
+            "score": 0,
+            "confidence": 0
+          },
+          "d5": {
+            "direction": "neutral",
+            "signal": false,
+            "score": 0,
+            "confidence": 0
+          }
+        },
+        {
+          "code": "300136",
+          "name": "信维通信",
+          "close": 103.0,
+          "d1": {
+            "direction": "down",
+            "signal": false,
+            "score": -0.0522,
+            "confidence": 50,
+            "support": 98.88,
+            "resistance": 109.18,
+            "rsi": 42.7,
+            "bb_pos": 0.4
+          },
+          "d3": {
+            "direction": "neutral",
+            "signal": false,
+            "score": 0,
+            "confidence": 0
+          },
+          "d5": {
+            "direction": "neutral",
+            "signal": false,
+            "score": 0,
+            "confidence": 0
+          }
+        },
+        {
+          "code": "002913",
+          "name": "奥士康",
+          "close": 52.28,
+          "d1": {
+            "direction": "up",
+            "signal": false,
+            "score": 0.3612,
+            "confidence": 51,
+            "support": 50.19,
+            "resistance": 54.89,
+            "rsi": 46.3,
+            "bb_pos": 0.28
+          },
+          "d3": {
+            "direction": "neutral",
+            "signal": false,
+            "score": 0,
+            "confidence": 0
+          },
+          "d5": {
+            "direction": "neutral",
+            "signal": false,
+            "score": 0,
+            "confidence": 0
+          }
+        },
+        {
+          "code": "002050",
+          "name": "三花智控",
+          "close": 47.49,
+          "d1": {
+            "direction": "down",
+            "signal": false,
+            "score": -0.0871,
+            "confidence": 50,
+            "support": 45.59,
+            "resistance": 49.86,
+            "rsi": 41.2,
+            "bb_pos": 0.32
+          },
+          "d3": {
+            "direction": "neutral",
+            "signal": false,
+            "score": 0,
+            "confidence": 0
+          },
+          "d5": {
+            "direction": "neutral",
+            "signal": false,
+            "score": 0,
+            "confidence": 0
+          }
+        }
+      ],
+      "replay": {
+        "603228": {
+          "name": "景旺电子",
+          "predicted_dir": "up",
+          "predicted_close": 72.21,
+          "actual_close": 72.21,
+          "actual_dir": "flat",
+          "pct_change": 0.0,
+          "correct": false
+        },
+        "300136": {
+          "name": "信维通信",
+          "predicted_dir": "down",
+          "predicted_close": 103.0,
+          "actual_close": 103.0,
+          "actual_dir": "flat",
+          "pct_change": 0.0,
+          "correct": false
+        },
+        "002913": {
+          "name": "奥士康",
+          "predicted_dir": "up",
+          "predicted_close": 52.28,
+          "actual_close": 52.28,
+          "actual_dir": "flat",
+          "pct_change": 0.0,
+          "correct": false
+        },
+        "002050": {
+          "name": "三花智控",
+          "predicted_dir": "down",
+          "predicted_close": 47.49,
+          "actual_close": 47.49,
+          "actual_dir": "flat",
+          "pct_change": 0.0,
+          "correct": false
+        }
+      }
+    },
+    "2026-06-10": {
+      "predictions": [
+        {
+          "code": "603228",
+          "name": "景旺电子",
+          "close": 72.21,
+          "d1": {
+            "direction": "UP",
+            "signal": true,
+            "score": 4.3624,
+            "confidence": 95,
+            "threshold": 2.5
+          },
+          "d3": {
+            "direction": "NEUTRAL",
+            "signal": false,
+            "score": 1.1297,
+            "confidence": 78,
+            "threshold": 2.0
+          },
+          "d5": {
+            "direction": "DOWN",
+            "signal": true,
+            "score": -4.3499,
+            "confidence": 95,
+            "threshold": 1.5
+          },
+          "rsi": 45.47,
+          "bb_pos": -0.4111,
+          "kdj_k": 23.35,
+          "streak": 1,
+          "roc5": -4.46,
+          "roc10": -17.47,
+          "support": 66.13,
+          "resistance": 81.03
+        },
+        {
+          "code": "300136",
+          "name": "信维通信",
+          "close": 103.0,
+          "d1": {
+            "direction": "DOWN",
+            "signal": true,
+            "score": -3.3598,
+            "confidence": 95,
+            "threshold": 3.0
+          },
+          "d3": {
+            "direction": "DOWN",
+            "signal": true,
+            "score": -2.2133,
+            "confidence": 95,
+            "threshold": 2.2
+          },
+          "d5": {
+            "direction": "DOWN",
+            "signal": true,
+            "score": -4.0205,
+            "confidence": 95,
+            "threshold": 1.8
+          },
+          "rsi": 42.72,
+          "bb_pos": -0.194,
+          "kdj_k": 47.16,
+          "streak": -2,
+          "roc5": 11.99,
+          "roc10": -6.64,
+          "support": 88.12,
+          "resistance": 122.34
+        },
+        {
+          "code": "002913",
+          "name": "奥士康",
+          "close": 52.28,
+          "d1": {
+            "direction": "UP",
+            "signal": true,
+            "score": 3.7036,
+            "confidence": 95,
+            "threshold": 2.5
+          },
+          "d3": {
+            "direction": "NEUTRAL",
+            "signal": false,
+            "score": 0.9217,
+            "confidence": 73,
+            "threshold": 2.0
+          },
+          "d5": {
+            "direction": "DOWN",
+            "signal": true,
+            "score": -2.6247,
+            "confidence": 95,
+            "threshold": 1.5
+          },
+          "rsi": 46.28,
+          "bb_pos": -0.4337,
+          "kdj_k": 34.98,
+          "streak": 1,
+          "roc5": -5.72,
+          "roc10": -9.09,
+          "support": 50.01,
+          "resistance": 57.47
+        },
+        {
+          "code": "002050",
+          "name": "三花智控",
+          "close": 47.49,
+          "d1": {
+            "direction": "DOWN",
+            "signal": true,
+            "score": -2.2256,
+            "confidence": 95,
+            "threshold": 1.2
+          },
+          "d3": {
+            "direction": "NEUTRAL",
+            "signal": false,
+            "score": -0.655,
+            "confidence": 72,
+            "threshold": 1.5
+          },
+          "d5": {
+            "direction": "DOWN",
+            "signal": true,
+            "score": -4.0366,
+            "confidence": 95,
+            "threshold": 1.2
+          },
+          "rsi": 41.21,
+          "bb_pos": -0.3506,
+          "kdj_k": 33.11,
+          "streak": 1,
+          "roc5": 5.14,
+          "roc10": -12.77,
+          "support": 43.12,
+          "resistance": 56.04
+        }
+      ],
+      "replay": {}
+    }
+  },
+  "tracking": {
+    "active": [
+      {
+        "date": "2026-06-10",
+        "target": "2026-06-11",
+        "code": "603228",
+        "name": "景旺电子",
+        "close": 72.21,
+        "d1": {
+          "direction": "UP",
+          "signal": true,
+          "score": 4.3624,
+          "confidence": 95,
+          "threshold": 2.5
+        },
+        "d3": {
+          "direction": "NEUTRAL",
+          "signal": false,
+          "score": 1.1297,
+          "confidence": 78,
+          "threshold": 2.0
+        },
+        "d5": {
+          "direction": "DOWN",
+          "signal": true,
+          "score": -4.3499,
+          "confidence": 95,
+          "threshold": 1.5
+        },
+        "rsi": 45.47,
+        "bb_pos": -0.4111,
+        "kdj_k": 23.35,
+        "streak": 1,
+        "roc5": -4.46,
+        "roc10": -17.47,
+        "support": 66.13,
+        "resistance": 81.03,
+        "result": null
+      },
+      {
+        "date": "2026-06-10",
+        "target": "2026-06-11",
+        "code": "300136",
+        "name": "信维通信",
+        "close": 103.0,
+        "d1": {
+          "direction": "DOWN",
+          "signal": true,
+          "score": -3.3598,
+          "confidence": 95,
+          "threshold": 3.0
+        },
+        "d3": {
+          "direction": "DOWN",
+          "signal": true,
+          "score": -2.2133,
+          "confidence": 95,
+          "threshold": 2.2
+        },
+        "d5": {
+          "direction": "DOWN",
+          "signal": true,
+          "score": -4.0205,
+          "confidence": 95,
+          "threshold": 1.8
+        },
+        "rsi": 42.72,
+        "bb_pos": -0.194,
+        "kdj_k": 47.16,
+        "streak": -2,
+        "roc5": 11.99,
+        "roc10": -6.64,
+        "support": 88.12,
+        "resistance": 122.34,
+        "result": null
+      },
+      {
+        "date": "2026-06-10",
+        "target": "2026-06-11",
+        "code": "002913",
+        "name": "奥士康",
+        "close": 52.28,
+        "d1": {
+          "direction": "UP",
+          "signal": true,
+          "score": 3.7036,
+          "confidence": 95,
+          "threshold": 2.5
+        },
+        "d3": {
+          "direction": "NEUTRAL",
+          "signal": false,
+          "score": 0.9217,
+          "confidence": 73,
+          "threshold": 2.0
+        },
+        "d5": {
+          "direction": "DOWN",
+          "signal": true,
+          "score": -2.6247,
+          "confidence": 95,
+          "threshold": 1.5
+        },
+        "rsi": 46.28,
+        "bb_pos": -0.4337,
+        "kdj_k": 34.98,
+        "streak": 1,
+        "roc5": -5.72,
+        "roc10": -9.09,
+        "support": 50.01,
+        "resistance": 57.47,
+        "result": null
+      },
+      {
+        "date": "2026-06-10",
+        "target": "2026-06-11",
+        "code": "002050",
+        "name": "三花智控",
+        "close": 47.49,
+        "d1": {
+          "direction": "DOWN",
+          "signal": true,
+          "score": -2.2256,
+          "confidence": 95,
+          "threshold": 1.2
+        },
+        "d3": {
+          "direction": "NEUTRAL",
+          "signal": false,
+          "score": -0.655,
+          "confidence": 72,
+          "threshold": 1.5
+        },
+        "d5": {
+          "direction": "DOWN",
+          "signal": true,
+          "score": -4.0366,
+          "confidence": 95,
+          "threshold": 1.2
+        },
+        "rsi": 41.21,
+        "bb_pos": -0.3506,
+        "kdj_k": 33.11,
+        "streak": 1,
+        "roc5": 5.14,
+        "roc10": -12.77,
+        "support": 43.12,
+        "resistance": 56.04,
+        "result": null
+      }
+    ],
+    "history": [
+      {
+        "date": "2026-06-09",
+        "target": "2026-06-10",
+        "code": "603228",
+        "name": "景旺电子",
+        "close": 72.21,
+        "d1": {
+          "direction": "up",
+          "signal": false,
+          "score": 0.3779,
+          "confidence": 51,
+          "support": 70.04,
+          "resistance": 75.82,
+          "rsi": 45.5,
+          "bb_pos": 0.29
+        },
+        "d3": {
+          "direction": "neutral",
+          "signal": false,
+          "score": 0,
+          "confidence": 0
+        },
+        "d5": {
+          "direction": "neutral",
+          "signal": false,
+          "score": 0,
+          "confidence": 0
+        },
+        "result": {
+          "actual_close": 72.21,
+          "actual_dir": "flat",
+          "pct_change": 0.0,
+          "correct": false
+        }
+      },
+      {
+        "date": "2026-06-09",
+        "target": "2026-06-10",
+        "code": "300136",
+        "name": "信维通信",
+        "close": 103.0,
+        "d1": {
+          "direction": "down",
+          "signal": false,
+          "score": -0.0522,
+          "confidence": 50,
+          "support": 98.88,
+          "resistance": 109.18,
+          "rsi": 42.7,
+          "bb_pos": 0.4
+        },
+        "d3": {
+          "direction": "neutral",
+          "signal": false,
+          "score": 0,
+          "confidence": 0
+        },
+        "d5": {
+          "direction": "neutral",
+          "signal": false,
+          "score": 0,
+          "confidence": 0
+        },
+        "result": {
+          "actual_close": 103.0,
+          "actual_dir": "flat",
+          "pct_change": 0.0,
+          "correct": false
+        }
+      },
+      {
+        "date": "2026-06-09",
+        "target": "2026-06-10",
+        "code": "002913",
+        "name": "奥士康",
+        "close": 52.28,
+        "d1": {
+          "direction": "up",
+          "signal": false,
+          "score": 0.3612,
+          "confidence": 51,
+          "support": 50.19,
+          "resistance": 54.89,
+          "rsi": 46.3,
+          "bb_pos": 0.28
+        },
+        "d3": {
+          "direction": "neutral",
+          "signal": false,
+          "score": 0,
+          "confidence": 0
+        },
+        "d5": {
+          "direction": "neutral",
+          "signal": false,
+          "score": 0,
+          "confidence": 0
+        },
+        "result": {
+          "actual_close": 52.28,
+          "actual_dir": "flat",
+          "pct_change": 0.0,
+          "correct": false
+        }
+      },
+      {
+        "date": "2026-06-09",
+        "target": "2026-06-10",
+        "code": "002050",
+        "name": "三花智控",
+        "close": 47.49,
+        "d1": {
+          "direction": "down",
+          "signal": false,
+          "score": -0.0871,
+          "confidence": 50,
+          "support": 45.59,
+          "resistance": 49.86,
+          "rsi": 41.2,
+          "bb_pos": 0.32
+        },
+        "d3": {
+          "direction": "neutral",
+          "signal": false,
+          "score": 0,
+          "confidence": 0
+        },
+        "d5": {
+          "direction": "neutral",
+          "signal": false,
+          "score": 0,
+          "confidence": 0
+        },
+        "result": {
+          "actual_close": 47.49,
+          "actual_dir": "flat",
+          "pct_change": 0.0,
+          "correct": false
+        }
+      }
+    ]
+  },
+  "backtest": {
+    "603228": {
+      "name": "景旺电子",
+      "accuracy": 0.0,
+      "correct": 0,
+      "total": 1
+    },
+    "300136": {
+      "name": "信维通信",
+      "accuracy": 0.0,
+      "correct": 0,
+      "total": 1
+    },
+    "002913": {
+      "name": "奥士康",
+      "accuracy": 0.0,
+      "correct": 0,
+      "total": 1
+    },
+    "002050": {
+      "name": "三花智控",
+      "accuracy": 0.0,
+      "correct": 0,
+      "total": 1
+    }
+  }
+}

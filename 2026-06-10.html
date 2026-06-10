@@ -1,139 +1,243 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>今日预测 — 2026-06-10 — A股科技股分析</title>
-<link rel="stylesheet" href="style.css">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A股科技股日报 - 2026-06-10</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<nav class="navbar">
-  <a href="index.html" class="navbar-brand"><span class="logo">📊</span>A股科技股分析</a>
-  <ul class="navbar-links">
-    <li><a href="index.html">首页</a></li>
-    <li><a href="2026-06-10.html" class="active">今日日报</a></li>
-    <li><a href="predictions.html">预测追踪<span class="navbar-badge">NEW</span></a></li>
-  </ul>
-</nav>
-<div class="container">
-<div class="disclaimer">⚠️ 本报告仅为数据分析与量化模型输出，不构成任何投资建议。投资有风险，入市需谨慎。</div>
-<div class="page-header">
-  <h1>🔮 今日预测<span class="version-tag">v3.0</span></h1>
-  <div class="subtitle">2026-06-10 · d1/d3/d5 三层独立预测 · 数据截止 2026-06-09</div>
-</div>
+    <nav class="navbar">
+      <div class="nav-brand"><span class="nav-icon">📊</span>A股科技股量化分析</div>
+      <div class="nav-links">
+        <a href="index.html">首页</a>
+        <a href="2026-06-10.html" class="active">今日日报</a>
+        <a href="predictions.html">预测追踪</a>
+      </div>
+    </nav>
+  <main class="container">
+    <div class="page-header">
+      <h1>📈 科技股日报 <span class="date-badge">2026-06-10</span></h1>
+      <p class="subtitle">多层预测 v3.0 · 覆盖4只核心科技股 · d1/d3/d5三层独立预测</p>
+    </div>
+    <div class="disclaimer">
+      ⚠️ <strong>免责声明：</strong>本报告仅为量化数据分析，不构成任何投资建议。所有预测基于历史数据的统计模型，实际走势可能与预测存在重大偏差。投资有风险，入市需谨慎。
+    </div>
+      <div class="section">
+        <h2 class="section-title">📋 昨日复盘 (06-09 → 06-10)</h2>
+        <div class="replay-summary">
+          <div class="replay-stat"><span class="replay-num">75%</span><span class="replay-label">d1准确率</span></div>
+          <div class="replay-stat"><span class="replay-num">3/4</span><span class="replay-label">信号正确</span></div>
+        </div>
+        <table class="data-table">
+          <thead><tr><th>股票</th><th>预测</th><th>实际涨跌</th><th>结果</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>景旺电子</td>
+              <td class="up">UP</td>
+              <td class="pos">+4.07%</td>
+              <td>✅</td>
+            </tr>
+            <tr>
+              <td>信维通信</td>
+              <td class="down">DOWN</td>
+              <td class="neg">-6.60%</td>
+              <td>✅</td>
+            </tr>
+            <tr>
+              <td>奥士康</td>
+              <td class="up">UP</td>
+              <td class="neg">-3.02%</td>
+              <td>❌</td>
+            </tr>
+            <tr>
+              <td>三花智控</td>
+              <td class="down">DOWN</td>
+              <td class="neg">-4.40%</td>
+              <td>✅</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    <div class="section">
+      <h2 class="section-title">🔮 今日预测 (06-10 → 06-11)</h2>
+      <div class="signal-notes">
+        <h3>📊 跨周期信号解读</h3>
+        <ul>
+            <li>景旺电子: 仅d1看涨 → 短期反弹，中期方向不明</li>
+            <li>信维通信: 三层共振看跌 → 趋势加速下行，风险最高</li>
+            <li>奥士康: 无明确信号 → 等待方向确认</li>
+            <li>三花智控: 三层共振看跌 → 趋势加速下行，风险最高</li>
+        </ul>
+      </div>
+      <div class="stock-grid">
+      <div class="stock-card signal-up">
+        <div class="card-header">
+          <span class="card-code">603228</span>
+          <span class="card-name">景旺电子</span>
+          <span class="card-type-badge">均值回归</span> <span class="replay-badge">✅ d1复盘</span>
+        </div>
+        <div class="card-body">
+          <div class="card-close">收盘: <strong>75.15</strong></div>
+          <table class="horizon-table">
+            <thead><tr><th>周期</th><th>方向</th><th>评分</th><th>置信</th></tr></thead>
+            <tbody>
+              <tr class="h-up">
+                <td class="h-label">d1</td>
+                <td>📈 UP <span class="signal-dot active"></span></td>
+                <td class="score">+2.63</td>
+                <td>95%</td>
+              </tr>
+              <tr class="h-neutral">
+                <td class="h-label">d3</td>
+                <td>➖ NEUTRAL</td>
+                <td class="score">+1.75</td>
+                <td>94%</td>
+              </tr>
+              <tr class="h-neutral">
+                <td class="h-label">d5</td>
+                <td>➖ NEUTRAL</td>
+                <td class="score">-0.33</td>
+                <td>61%</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="card-tech">
+            <span class="tech-item rsi-mid">RSI:50.16</span>
+            <span class="tech-item">BB:-0.112</span>
+            <span class="tech-item neg">ROC5:-0.2%</span>
+            <span class="tech-item neg">ROC10:-7.5%</span>
+          </div>
+          <div class="card-sr">🛡 支撑:68.96 | 🎯 压力:87.5</div>
+        </div>
+      </div>
+      <div class="stock-card signal-down">
+        <div class="card-header">
+          <span class="card-code">300136</span>
+          <span class="card-name">信维通信</span>
+          <span class="card-type-badge">趋势跟随</span> <span class="replay-badge">✅ d1复盘</span>
+        </div>
+        <div class="card-body">
+          <div class="card-close">收盘: <strong>96.2</strong></div>
+          <table class="horizon-table">
+            <thead><tr><th>周期</th><th>方向</th><th>评分</th><th>置信</th></tr></thead>
+            <tbody>
+              <tr class="h-down">
+                <td class="h-label">d1</td>
+                <td>📉 DOWN <span class="signal-dot active"></span></td>
+                <td class="score">-3.67</td>
+                <td>95%</td>
+              </tr>
+              <tr class="h-down">
+                <td class="h-label">d3</td>
+                <td>📉 DOWN <span class="signal-dot active"></span></td>
+                <td class="score">-3.18</td>
+                <td>95%</td>
+              </tr>
+              <tr class="h-down">
+                <td class="h-label">d5</td>
+                <td>📉 DOWN <span class="signal-dot active"></span></td>
+                <td class="score">-3.88</td>
+                <td>95%</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="card-tech">
+            <span class="tech-item rsi-mid">RSI:40.26</span>
+            <span class="tech-item">BB:-0.5542</span>
+            <span class="tech-item neg">ROC5:-1.8%</span>
+            <span class="tech-item neg">ROC10:-15.4%</span>
+          </div>
+          <div class="card-sr">🛡 支撑:91.53 | 🎯 压力:118.98</div>
+        </div>
+      </div>
+      <div class="stock-card signal-neutral">
+        <div class="card-header">
+          <span class="card-code">002913</span>
+          <span class="card-name">奥士康</span>
+          <span class="card-type-badge">弱均值回归</span> <span class="replay-badge">❌ d1复盘</span>
+        </div>
+        <div class="card-body">
+          <div class="card-close">收盘: <strong>50.7</strong></div>
+          <table class="horizon-table">
+            <thead><tr><th>周期</th><th>方向</th><th>评分</th><th>置信</th></tr></thead>
+            <tbody>
+              <tr class="h-neutral">
+                <td class="h-label">d1</td>
+                <td>➖ NEUTRAL</td>
+                <td class="score">+2.48</td>
+                <td>95%</td>
+              </tr>
+              <tr class="h-neutral">
+                <td class="h-label">d3</td>
+                <td>➖ NEUTRAL</td>
+                <td class="score">+0.60</td>
+                <td>65%</td>
+              </tr>
+              <tr class="h-neutral">
+                <td class="h-label">d5</td>
+                <td>➖ NEUTRAL</td>
+                <td class="score">-1.10</td>
+                <td>87%</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="card-tech">
+            <span class="tech-item rsi-mid">RSI:45.75</span>
+            <span class="tech-item">BB:-0.7603</span>
+            <span class="tech-item neg">ROC5:-6.2%</span>
+            <span class="tech-item neg">ROC10:-7.0%</span>
+          </div>
+          <div class="card-sr">🛡 支撑:50.57 | 🎯 压力:57.57</div>
+        </div>
+      </div>
+      <div class="stock-card signal-down">
+        <div class="card-header">
+          <span class="card-code">002050</span>
+          <span class="card-name">三花智控</span>
+          <span class="card-type-badge">混合型</span> <span class="replay-badge">✅ d1复盘</span>
+        </div>
+        <div class="card-body">
+          <div class="card-close">收盘: <strong>45.4</strong></div>
+          <table class="horizon-table">
+            <thead><tr><th>周期</th><th>方向</th><th>评分</th><th>置信</th></tr></thead>
+            <tbody>
+              <tr class="h-down">
+                <td class="h-label">d1</td>
+                <td>📉 DOWN <span class="signal-dot active"></span></td>
+                <td class="score">-2.45</td>
+                <td>95%</td>
+              </tr>
+              <tr class="h-down">
+                <td class="h-label">d3</td>
+                <td>📉 DOWN <span class="signal-dot active"></span></td>
+                <td class="score">-1.51</td>
+                <td>95%</td>
+              </tr>
+              <tr class="h-down">
+                <td class="h-label">d5</td>
+                <td>📉 DOWN <span class="signal-dot active"></span></td>
+                <td class="score">-2.97</td>
+                <td>95%</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="card-tech">
+            <span class="tech-item rsi-low">RSI:28.41</span>
+            <span class="tech-item">BB:-0.6122</span>
+            <span class="tech-item neg">ROC5:-3.4%</span>
+            <span class="tech-item neg">ROC10:-6.6%</span>
+          </div>
+          <div class="card-sr">🛡 支撑:44.57 | 🎯 压力:54.44</div>
+        </div>
+      </div>
 
-<div class="cards-grid"><div class="stock-card signal-up">
-    <div class="card-header">
-      <span class="stock-code">603228</span>
-      <span class="stock-name">景旺电子</span>
-      <span class="stock-type">mean_reversion</span>
-    </div>
-    <div class="card-body">
-      <div class="card-close">收盘价 <strong>72.21</strong> · 2026-06-09</div>
-      <table class="horizon-table">
-        <thead><tr><th>周期</th><th>方向</th><th>评分</th><th>置信度</th></tr></thead>
-        <tbody><tr class="h-up"><td class="h-label">d1</td><td><span class="signal-dot up"></span>📈 UP <span class="signal-lightning">⚡</span></td><td class="h-score">+4.36</td><td class="h-conf">95%</td></tr><tr class="h-neutral"><td class="h-label">d3</td><td><span class="signal-dot neutral"></span>➖ NEUTRAL <span class="signal-lightning"></span></td><td class="h-score">+1.13</td><td class="h-conf">78%</td></tr><tr class="h-down"><td class="h-label">d5</td><td><span class="signal-dot down"></span>📉 DOWN <span class="signal-lightning">⚡</span></td><td class="h-score">-4.35</td><td class="h-conf">95%</td></tr></tbody>
-      </table>
-      <div class="card-tech">
-        <span>RSI <span class="down">45.5</span></span>
-        <span>BB <span class="down">-0.411</span></span>
-        <span>KDJ<sub>K</sub> 23.4</span>
-        <span>ROC5 <span class="down">-4.5%</span></span>
-        <span>ROC10 <span class="down">-17.5%</span></span>
-      </div>
-      <div class="card-sr">
-        <span>🛡 支撑 66.13</span>
-        <span>🎯 压力 81.03</span>
       </div>
     </div>
-  </div><div class="stock-card signal-down">
-    <div class="card-header">
-      <span class="stock-code">300136</span>
-      <span class="stock-name">信维通信</span>
-      <span class="stock-type">trend_follow</span>
-    </div>
-    <div class="card-body">
-      <div class="card-close">收盘价 <strong>103.0</strong> · 2026-06-09</div>
-      <table class="horizon-table">
-        <thead><tr><th>周期</th><th>方向</th><th>评分</th><th>置信度</th></tr></thead>
-        <tbody><tr class="h-down"><td class="h-label">d1</td><td><span class="signal-dot down"></span>📉 DOWN <span class="signal-lightning">⚡</span></td><td class="h-score">-3.36</td><td class="h-conf">95%</td></tr><tr class="h-down"><td class="h-label">d3</td><td><span class="signal-dot down"></span>📉 DOWN <span class="signal-lightning">⚡</span></td><td class="h-score">-2.21</td><td class="h-conf">95%</td></tr><tr class="h-down"><td class="h-label">d5</td><td><span class="signal-dot down"></span>📉 DOWN <span class="signal-lightning">⚡</span></td><td class="h-score">-4.02</td><td class="h-conf">95%</td></tr></tbody>
-      </table>
-      <div class="card-tech">
-        <span>RSI <span class="down">42.7</span></span>
-        <span>BB <span class="down">-0.194</span></span>
-        <span>KDJ<sub>K</sub> 47.2</span>
-        <span>ROC5 <span class="up">+12.0%</span></span>
-        <span>ROC10 <span class="down">-6.6%</span></span>
-      </div>
-      <div class="card-sr">
-        <span>🛡 支撑 88.12</span>
-        <span>🎯 压力 122.34</span>
-      </div>
-    </div>
-  </div><div class="stock-card signal-up">
-    <div class="card-header">
-      <span class="stock-code">002913</span>
-      <span class="stock-name">奥士康</span>
-      <span class="stock-type">mean_reversion_weak</span>
-    </div>
-    <div class="card-body">
-      <div class="card-close">收盘价 <strong>52.28</strong> · 2026-06-09</div>
-      <table class="horizon-table">
-        <thead><tr><th>周期</th><th>方向</th><th>评分</th><th>置信度</th></tr></thead>
-        <tbody><tr class="h-up"><td class="h-label">d1</td><td><span class="signal-dot up"></span>📈 UP <span class="signal-lightning">⚡</span></td><td class="h-score">+3.70</td><td class="h-conf">95%</td></tr><tr class="h-neutral"><td class="h-label">d3</td><td><span class="signal-dot neutral"></span>➖ NEUTRAL <span class="signal-lightning"></span></td><td class="h-score">+0.92</td><td class="h-conf">73%</td></tr><tr class="h-down"><td class="h-label">d5</td><td><span class="signal-dot down"></span>📉 DOWN <span class="signal-lightning">⚡</span></td><td class="h-score">-2.62</td><td class="h-conf">95%</td></tr></tbody>
-      </table>
-      <div class="card-tech">
-        <span>RSI <span class="down">46.3</span></span>
-        <span>BB <span class="down">-0.434</span></span>
-        <span>KDJ<sub>K</sub> 35.0</span>
-        <span>ROC5 <span class="down">-5.7%</span></span>
-        <span>ROC10 <span class="down">-9.1%</span></span>
-      </div>
-      <div class="card-sr">
-        <span>🛡 支撑 50.01</span>
-        <span>🎯 压力 57.47</span>
-      </div>
-    </div>
-  </div><div class="stock-card signal-down">
-    <div class="card-header">
-      <span class="stock-code">002050</span>
-      <span class="stock-name">三花智控</span>
-      <span class="stock-type">mixed</span>
-    </div>
-    <div class="card-body">
-      <div class="card-close">收盘价 <strong>47.49</strong> · 2026-06-09</div>
-      <table class="horizon-table">
-        <thead><tr><th>周期</th><th>方向</th><th>评分</th><th>置信度</th></tr></thead>
-        <tbody><tr class="h-down"><td class="h-label">d1</td><td><span class="signal-dot down"></span>📉 DOWN <span class="signal-lightning">⚡</span></td><td class="h-score">-2.23</td><td class="h-conf">95%</td></tr><tr class="h-neutral"><td class="h-label">d3</td><td><span class="signal-dot neutral"></span>➖ NEUTRAL <span class="signal-lightning"></span></td><td class="h-score">-0.66</td><td class="h-conf">72%</td></tr><tr class="h-down"><td class="h-label">d5</td><td><span class="signal-dot down"></span>📉 DOWN <span class="signal-lightning">⚡</span></td><td class="h-score">-4.04</td><td class="h-conf">95%</td></tr></tbody>
-      </table>
-      <div class="card-tech">
-        <span>RSI <span class="down">41.2</span></span>
-        <span>BB <span class="down">-0.351</span></span>
-        <span>KDJ<sub>K</sub> 33.1</span>
-        <span>ROC5 <span class="up">+5.1%</span></span>
-        <span>ROC10 <span class="down">-12.8%</span></span>
-      </div>
-      <div class="card-sr">
-        <span>🛡 支撑 43.12</span>
-        <span>🎯 压力 56.04</span>
-      </div>
-    </div>
-  </div></div>
-
-<div class="replay-section">
-  <h2>📋 昨日复盘 (2026-06-09 → 2026-06-10)</h2>
-  <div class="replay-summary">d1方向准确率: <strong>—</strong> (0/0) | 方向正确: 0/4</div>
-  <table class="data-table"><tr><th>股票</th><th>预测方向</th><th>预测价</th><th>实际价</th><th>涨跌幅</th><th>结果</th></tr><tr class="incorrect"><td>景旺电子</td><td>up</td><td>72.21</td><td>72.21</td><td>+0.00%</td><td>❌</td></tr><tr class="incorrect"><td>信维通信</td><td>down</td><td>103.00</td><td>103.00</td><td>+0.00%</td><td>❌</td></tr><tr class="incorrect"><td>奥士康</td><td>up</td><td>52.28</td><td>52.28</td><td>+0.00%</td><td>❌</td></tr><tr class="incorrect"><td>三花智控</td><td>down</td><td>47.49</td><td>47.49</td><td>+0.00%</td><td>❌</td></tr></table>
-</div>
-
-<h2>📋 股票策略速查</h2>
-<table class="personality-table">
-  <thead><tr><th>代码</th><th>名称</th><th>性格</th><th>d1策略</th><th>d3策略</th><th>d5策略</th></tr></thead>
-  <tbody><tr><td class="stock-code" style="font-size:.8rem">603228</td><td>景旺电子</td><td class="type-mr">均值回归</td><td>KDJ+BB</td><td>ROC5+KDJ</td><td>ROC10+BB</td></tr><tr><td class="stock-code" style="font-size:.8rem">300136</td><td>信维通信</td><td class="type-tf">趋势跟随</td><td>MACD+MA</td><td>ROC5+MACD</td><td>ROC10+MACD</td></tr><tr><td class="stock-code" style="font-size:.8rem">002913</td><td>奥士康</td><td class="type-mr">均值回归(弱)</td><td>KDJ+BB</td><td>ROC5+KDJ</td><td>ROC10+BB</td></tr><tr><td class="stock-code" style="font-size:.8rem">002050</td><td>三花智控</td><td class="type-mx">混合型</td><td>MACD+KDJ</td><td>ROC5+MACD</td><td>ROC10+MACD</td></tr></tbody>
-</table>
-
-<div class="footer">
-  <div class="footer-links"><a href="index.html">首页</a><a href="predictions.html">预测追踪</a><a href="2026-06-10.html">今日日报</a></div>
-  <p>数据源: 新浪财经K线API · 模型 v3.0 多层预测 (d1/d3/d5) · 生成: 2026-06-10 12:25</p>
-</div>
-</div>
+  </main>
+    <footer class="site-footer">
+      <p>Hermes A-Share Quant · 数据来源：新浪财经 · 更新时间：2026-06-10 13:49 CST</p>
+      <p>模型版本 v3.0 (多层预测) · 仅服务于学习研究目的</p>
+    </footer>
 </body>
 </html>

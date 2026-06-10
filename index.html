@@ -1,52 +1,68 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>A股科技股分析 — 多层预测 v3.0</title>
-<link rel="stylesheet" href="style.css">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A股科技股量化分析</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<nav class="navbar">
-  <a href="index.html" class="active" class="navbar-brand"><span class="logo">📊</span>A股科技股分析</a>
-  <ul class="navbar-links">
-    <li><a href="index.html" class="active">首页</a></li>
-    <li><a href="index.html" class="active" >今日日报</a></li>
-    <li><a href="predictions.html">预测追踪<span class="navbar-badge">NEW</span></a></li>
-  </ul>
-</nav>
-<div class="container">
-<div class="disclaimer">⚠️ 本报告仅为数据分析与量化模型输出，不构成任何投资建议。投资有风险，入市需谨慎。</div>
-<div class="page-header">
-  <h1>A股科技股量化分析<span class="version-tag">v3.0</span></h1>
-  <div class="subtitle">d1/d3/d5 三层独立预测 · 4只核心科技股 · 每日收盘后自动更新</div>
-</div>
+    <nav class="navbar">
+      <div class="nav-brand"><span class="nav-icon">📊</span>A股科技股量化分析</div>
+      <div class="nav-links">
+        <a href="index.html" class="active">首页</a>
+        <a href="2026-06-10.html" >今日日报</a>
+        <a href="predictions.html">预测追踪</a>
+      </div>
+    </nav>
+  <main class="container">
+    <div class="hero">
+      <div class="hero-card">
+        <div class="hero-icon">📊</div>
+        <h1>A股科技股量化分析</h1>
+        <p class="hero-desc">基于多层预测模型 v3.0，覆盖4只核心科技股，d1/d3/d5三层独立预测，每日复盘进化</p>
+      </div>
+      <div class="hero-card">
+        <div class="hero-icon">🔮</div>
+        <h2>最新信号</h2>
+        <p class="hero-stat-num">7</p>
+        <p class="hero-stat-label">活跃信号 (今日)</p>
+        <p class="hero-stat-num">3</p>
+        <p class="hero-stat-label">昨日d1正确信号</p>
+      </div>
+    </div>
+    <div class="stats-bar">
+      <div class="stat-item"><span class="stat-num">4</span><span class="stat-label">核心股票</span></div>
+      <div class="stat-item"><span class="stat-num">d1+d3+d5</span><span class="stat-label">预测层级</span></div>
+      <div class="stat-item"><span class="stat-num">3.0</span><span class="stat-label">模型版本</span></div>
+      <div class="stat-item"><span class="stat-num">1</span><span class="stat-label">历史日报</span></div>
+    </div>
+    <div class="disclaimer">
+      ⚠️ <strong>免责声明：</strong>本报告仅为量化数据分析，不构成任何投资建议。所有预测基于历史数据的统计模型，实际走势可能与预测存在重大偏差。投资有风险，入市需谨慎。
+    </div>
+    <div class="section">
+      <h2 class="section-title">📅 日报存档</h2>
+      <div class="archive-grid">
+          <a href="2026-06-10.html" class="archive-item">2026-06-10 <span class="archive-meta">(10KB)</span></a>
 
-<div class="hero-cards">
-  <a href="2026-06-10.html" class="hero-card">
-    <div class="hero-icon">🔮</div>
-    <h2>今日预测</h2>
-    <p>d1信号 4/4 · d3信号 1/4 · d5信号 4/4</p>
-  </a>
-  <a href="predictions.html" class="hero-card">
-    <div class="hero-icon">📈</div>
-    <h2>预测追踪</h2>
-    <p>历史预测复盘 · 活跃预测追踪 · d1/d3/d5三层验证</p>
-  </a>
-</div>
-
-<div class="stats-row">
-  <div class="stat-item"><div class="stat-value">3</div><div class="stat-label">累计日报</div></div>
-  <div class="stat-item"><div class="stat-value">4</div><div class="stat-label">核心股票</div></div>
-  <div class="stat-item"><div class="stat-value">3</div><div class="stat-label">预测层级</div></div>
-  <div class="stat-item"><div class="stat-value">2026-06-10</div><div class="stat-label">最新数据</div></div>
-</div>
-
-<h2>历史日报</h2>
-<div class="archive-list"><a href="2026-06-10.html">2026-06-10</a><a href="2026-06-09.html">2026-06-09</a><a href="2026-06-08.html">2026-06-08</a></div>
-
-<div class="footer">
-  <div class="footer-links"><a href="index.html">首页</a><a href="predictions.html">预测追踪</a><a href="2026-06-10.html">今日日报</a></div>
-  <p>数据源: 新浪财经K线API · 模型 v3.0 多层预测 (d1/d3/d5) · 生成: 2026-06-10 12:25</p>
-</div>
-</div>
+      </div>
+    </div>
+    <div class="quick-links">
+      <a href="predictions.html" class="quick-link-card">
+        <span class="ql-icon">🎯</span>
+        <span class="ql-title">预测追踪</span>
+        <span class="ql-desc">d1/d3/d5三层全部预测 & 复盘</span>
+      </a>
+      <a href="2026-06-10.html" class="quick-link-card">
+        <span class="ql-icon">📈</span>
+        <span class="ql-title">今日日报</span>
+        <span class="ql-desc">2026-06-10 完整分析</span>
+      </a>
+    </div>
+  </main>
+    <footer class="site-footer">
+      <p>Hermes A-Share Quant · 数据来源：新浪财经 · 更新时间：2026-06-10 13:49 CST</p>
+      <p>模型版本 v3.0 (多层预测) · 仅服务于学习研究目的</p>
+    </footer>
 </body>
 </html>
