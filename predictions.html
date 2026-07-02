@@ -1,136 +1,86 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>预测追踪 - A股科技股量化分析</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <nav class="navbar">
-      <div class="nav-brand"><span class="nav-icon">📊</span>A股科技股量化分析</div>
-      <div class="nav-links">
-        <a href="index.html">首页</a>
-        <a href="2026-06-10.html" >今日日报</a>
-        <a href="predictions.html" class="active">预测追踪</a>
-      </div>
-    </nav>
-  <main class="container">
-    <div class="page-header">
-      <h1>🎯 预测追踪</h1>
-      <p class="subtitle">多层预测 v3.0 · d1/d3/d5三层独立追踪 · 全部历史预测</p>
-    </div>
-    <div class="disclaimer">
-      ⚠️ <strong>免责声明：</strong>本报告仅为量化数据分析，不构成任何投资建议。所有预测基于历史数据的统计模型，实际走势可能与预测存在重大偏差。投资有风险，入市需谨慎。
-    </div>
-    <div class="tabs">
-      <button class="tab-btn active" onclick="showTab('active')">活跃预测</button>
-      <button class="tab-btn" onclick="showTab('archive')">已归档</button>
-    </div>
-    <div id="tab-active" class="tab-content active">
-      <div class="table-wrap">
-        <table class="data-table">
-          <thead><tr><th>预测日</th><th>目标日</th><th>代码</th><th>名称</th><th>周期</th><th>方向</th><th>评分</th><th>置信</th><th>信号</th><th>复盘</th></tr></thead>
-          <tbody>
-              <tr class="">
-                <td>2026-06-10</td><td>2026-06-11</td><td>603228</td><td>景旺电子</td>
-                <td class="h-label">d1</td><td>📈 UP</td>
-                <td class="up">+2.63</td>
-                <td>95%</td><td>⚡</td><td class="replay-col">⏳</td>
-              </tr>
-              <tr class="">
-                <td>2026-06-10</td><td>2026-06-11</td><td>603228</td><td>景旺电子</td>
-                <td class="h-label">d3</td><td>➖ NEUTRAL</td>
-                <td class="up">+1.75</td>
-                <td>94%</td><td>—</td><td class="replay-col">⏳</td>
-              </tr>
-              <tr class="">
-                <td>2026-06-10</td><td>2026-06-11</td><td>603228</td><td>景旺电子</td>
-                <td class="h-label">d5</td><td>➖ NEUTRAL</td>
-                <td class="down">-0.33</td>
-                <td>61%</td><td>—</td><td class="replay-col">⏳</td>
-              </tr>
-              <tr class="">
-                <td>2026-06-10</td><td>2026-06-11</td><td>300136</td><td>信维通信</td>
-                <td class="h-label">d1</td><td>📉 DOWN</td>
-                <td class="down">-3.67</td>
-                <td>95%</td><td>⚡</td><td class="replay-col">⏳</td>
-              </tr>
-              <tr class="">
-                <td>2026-06-10</td><td>2026-06-11</td><td>300136</td><td>信维通信</td>
-                <td class="h-label">d3</td><td>📉 DOWN</td>
-                <td class="down">-3.18</td>
-                <td>95%</td><td>⚡</td><td class="replay-col">⏳</td>
-              </tr>
-              <tr class="">
-                <td>2026-06-10</td><td>2026-06-11</td><td>300136</td><td>信维通信</td>
-                <td class="h-label">d5</td><td>📉 DOWN</td>
-                <td class="down">-3.88</td>
-                <td>95%</td><td>⚡</td><td class="replay-col">⏳</td>
-              </tr>
-              <tr class="">
-                <td>2026-06-10</td><td>2026-06-11</td><td>002913</td><td>奥士康</td>
-                <td class="h-label">d1</td><td>➖ NEUTRAL</td>
-                <td class="up">+2.48</td>
-                <td>95%</td><td>—</td><td class="replay-col">⏳</td>
-              </tr>
-              <tr class="">
-                <td>2026-06-10</td><td>2026-06-11</td><td>002913</td><td>奥士康</td>
-                <td class="h-label">d3</td><td>➖ NEUTRAL</td>
-                <td class="up">+0.60</td>
-                <td>65%</td><td>—</td><td class="replay-col">⏳</td>
-              </tr>
-              <tr class="">
-                <td>2026-06-10</td><td>2026-06-11</td><td>002913</td><td>奥士康</td>
-                <td class="h-label">d5</td><td>➖ NEUTRAL</td>
-                <td class="down">-1.10</td>
-                <td>87%</td><td>—</td><td class="replay-col">⏳</td>
-              </tr>
-              <tr class="">
-                <td>2026-06-10</td><td>2026-06-11</td><td>002050</td><td>三花智控</td>
-                <td class="h-label">d1</td><td>📉 DOWN</td>
-                <td class="down">-2.45</td>
-                <td>95%</td><td>⚡</td><td class="replay-col">⏳</td>
-              </tr>
-              <tr class="">
-                <td>2026-06-10</td><td>2026-06-11</td><td>002050</td><td>三花智控</td>
-                <td class="h-label">d3</td><td>📉 DOWN</td>
-                <td class="down">-1.51</td>
-                <td>95%</td><td>⚡</td><td class="replay-col">⏳</td>
-              </tr>
-              <tr class="">
-                <td>2026-06-10</td><td>2026-06-11</td><td>002050</td><td>三花智控</td>
-                <td class="h-label">d5</td><td>📉 DOWN</td>
-                <td class="down">-2.97</td>
-                <td>95%</td><td>⚡</td><td class="replay-col">⏳</td>
-              </tr>
-
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <div id="tab-archive" class="tab-content">
-      <div class="table-wrap">
-        <table class="data-table">
-          <thead><tr><th>预测日</th><th>目标日</th><th>代码</th><th>名称</th><th>周期</th><th>方向</th><th>评分</th><th>置信</th><th>信号</th><th>复盘</th></tr></thead>
-          <tbody>
-
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </main>
-  <script>
-    function showTab(name) {
-      document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      document.getElementById('tab-'+name).classList.add('active');
-      document.querySelector(`[onclick="showTab('${name}')"]`).classList.add('active');
-    }
-  </script>
-    <footer class="site-footer">
-      <p>Hermes A-Share Quant · 数据来源：新浪财经 · 更新时间：2026-06-10 13:49 CST</p>
-      <p>模型版本 v3.0 (多层预测) · 仅服务于学习研究目的</p>
-    </footer>
-</body>
-</html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>预测追踪</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#070b14;color:#e5e7eb;font-family:-apple-system,sans-serif;padding:20px;max-width:1100px;margin:0 auto}
+h1{font-size:1.5em;margin-bottom:4px}
+.disclaimer{background:#1f2937;color:#9ca3af;padding:10px 14px;border-radius:6px;font-size:0.8em;margin:12px 0}
+a{color:#3b82f6;text-decoration:none}
+table{width:100%;border-collapse:collapse;font-size:0.85em}
+th{color:#9ca3af;font-weight:500;border-bottom:1px solid #374151;padding:8px 12px;text-align:left;position:sticky;top:0;background:#070b14}
+td{padding:6px 12px;border-bottom:1px solid #111827}
+tr:hover{background:#111827}
+.footer{text-align:center;color:#374151;font-size:0.75em;margin-top:32px;padding-top:16px;border-top:1px solid #1f2937}
+</style></head><body>
+<a href="index.html">← 返回首页</a>
+<h1>📋 预测追踪</h1>
+<div class="disclaimer">所有历史预测及复盘。d1次日验证，d3/d5待到期后复盘。⏳=待验证。</div>
+<table><tr><th>日期</th><th>代码</th><th>名称</th><th>周期</th><th>方向</th><th>评分</th><th>置信</th><th>实际</th><th>结果</th></tr>
+<tr style="color:#6b7280"><td>2026-06-30</td><td>603228</td><td>景旺电子</td><td>d5</td><td>➖ NEUTRAL </td><td>-1.22</td><td>91%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#6b7280"><td>2026-06-30</td><td>603228</td><td>景旺电子</td><td>d3</td><td>➖ NEUTRAL </td><td>+1.31</td><td>83%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#10b981"><td>2026-06-30</td><td>603228</td><td>景旺电子</td><td>d1</td><td>📈 UP ⚡</td><td>+7.24</td><td>95%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#10b981"><td>2026-06-30</td><td>300136</td><td>信维通信</td><td>d5</td><td>📈 UP ⚡</td><td>+2.03</td><td>95%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#10b981"><td>2026-06-30</td><td>300136</td><td>信维通信</td><td>d3</td><td>📈 UP ⚡</td><td>+10.02</td><td>95%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#10b981"><td>2026-06-30</td><td>300136</td><td>信维通信</td><td>d1</td><td>📈 UP ⚡</td><td>+10.80</td><td>95%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#6b7280"><td>2026-06-30</td><td>002913</td><td>奥士康</td><td>d5</td><td>➖ NEUTRAL </td><td>+0.52</td><td>67%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#6b7280"><td>2026-06-30</td><td>002913</td><td>奥士康</td><td>d3</td><td>➖ NEUTRAL </td><td>-1.72</td><td>93%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#6b7280"><td>2026-06-30</td><td>002913</td><td>奥士康</td><td>d1</td><td>➖ NEUTRAL </td><td>+1.18</td><td>74%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#ef4444"><td>2026-06-30</td><td>002050</td><td>三花智控</td><td>d5</td><td>📉 DOWN ⚡</td><td>-3.52</td><td>95%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#ef4444"><td>2026-06-30</td><td>002050</td><td>三花智控</td><td>d3</td><td>📉 DOWN ⚡</td><td>-1.76</td><td>95%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#ef4444"><td>2026-06-30</td><td>002050</td><td>三花智控</td><td>d1</td><td>📉 DOWN ⚡</td><td>-1.71</td><td>95%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#6b7280"><td>2026-06-17</td><td>603228</td><td>景旺电子</td><td>d5</td><td>➖ NEUTRAL </td><td>-0.10</td><td>53%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#10b981"><td>2026-06-17</td><td>603228</td><td>景旺电子</td><td>d3</td><td>📈 UP ⚡</td><td>+2.00</td><td>95%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#6b7280"><td>2026-06-17</td><td>603228</td><td>景旺电子</td><td>d1</td><td>➖ NEUTRAL </td><td>+1.94</td><td>89%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#6b7280"><td>2026-06-17</td><td>300136</td><td>信维通信</td><td>d5</td><td>➖ NEUTRAL </td><td>-1.09</td><td>80%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#6b7280"><td>2026-06-17</td><td>300136</td><td>信维通信</td><td>d3</td><td>➖ NEUTRAL </td><td>+0.94</td><td>71%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#6b7280"><td>2026-06-17</td><td>300136</td><td>信维通信</td><td>d1</td><td>➖ NEUTRAL </td><td>+1.24</td><td>71%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#10b981"><td>2026-06-17</td><td>002913</td><td>奥士康</td><td>d5</td><td>📈 UP ⚡</td><td>+3.84</td><td>95%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#10b981"><td>2026-06-17</td><td>002913</td><td>奥士康</td><td>d3</td><td>📈 UP ⚡</td><td>+6.59</td><td>95%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#6b7280"><td>2026-06-17</td><td>002913</td><td>奥士康</td><td>d1</td><td>➖ NEUTRAL </td><td>+2.45</td><td>95%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#ef4444"><td>2026-06-17</td><td>002050</td><td>三花智控</td><td>d5</td><td>📉 DOWN ⚡</td><td>-1.64</td><td>95%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#ef4444"><td>2026-06-17</td><td>002050</td><td>三花智控</td><td>d3</td><td>📉 DOWN ⚡</td><td>-1.55</td><td>95%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#ef4444"><td>2026-06-17</td><td>002050</td><td>三花智控</td><td>d1</td><td>📉 DOWN ⚡</td><td>-1.77</td><td>95%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#6b7280"><td>2026-06-15</td><td>603228</td><td>景旺电子</td><td>d5</td><td>➖ NEUTRAL </td><td>+0.78</td><td>76%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#10b981"><td>2026-06-15</td><td>603228</td><td>景旺电子</td><td>d3</td><td>📈 UP ⚡</td><td>+2.77</td><td>95%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#6b7280"><td>2026-06-15</td><td>603228</td><td>景旺电子</td><td>d1</td><td>➖ NEUTRAL </td><td>+0.42</td><td>58%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#6b7280"><td>2026-06-15</td><td>300136</td><td>信维通信</td><td>d5</td><td>➖ NEUTRAL </td><td>-1.73</td><td>95%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#6b7280"><td>2026-06-15</td><td>300136</td><td>信维通信</td><td>d3</td><td>➖ NEUTRAL </td><td>+0.68</td><td>65%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#6b7280"><td>2026-06-15</td><td>300136</td><td>信维通信</td><td>d1</td><td>➖ NEUTRAL </td><td>+0.51</td><td>59%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#6b7280"><td>2026-06-15</td><td>002913</td><td>奥士康</td><td>d5</td><td>➖ NEUTRAL </td><td>+1.00</td><td>83%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#10b981"><td>2026-06-15</td><td>002913</td><td>奥士康</td><td>d3</td><td>📈 UP ⚡</td><td>+4.26</td><td>95%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#6b7280"><td>2026-06-15</td><td>002913</td><td>奥士康</td><td>d1</td><td>➖ NEUTRAL </td><td>-0.92</td><td>68%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#ef4444"><td>2026-06-15</td><td>002050</td><td>三花智控</td><td>d5</td><td>📉 DOWN ⚡</td><td>-1.30</td><td>95%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#6b7280"><td>2026-06-15</td><td>002050</td><td>三花智控</td><td>d3</td><td>➖ NEUTRAL </td><td>-1.43</td><td>95%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#ef4444"><td>2026-06-15</td><td>002050</td><td>三花智控</td><td>d1</td><td>📉 DOWN ⚡</td><td>-2.06</td><td>95%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#ef4444"><td>2026-06-12</td><td>603228</td><td>景旺电子</td><td>d5</td><td>📉 DOWN ⚡</td><td>-2.41</td><td>95%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#6b7280"><td>2026-06-12</td><td>603228</td><td>景旺电子</td><td>d3</td><td>➖ NEUTRAL </td><td>+1.05</td><td>76%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#6b7280"><td>2026-06-12</td><td>603228</td><td>景旺电子</td><td>d1</td><td>➖ NEUTRAL </td><td>+2.09</td><td>92%</td><td>+8.73%</td><td>❌</td></tr>
+<tr style="color:#ef4444"><td>2026-06-12</td><td>300136</td><td>信维通信</td><td>d5</td><td>📉 DOWN ⚡</td><td>-4.35</td><td>95%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#ef4444"><td>2026-06-12</td><td>300136</td><td>信维通信</td><td>d3</td><td>📉 DOWN ⚡</td><td>-5.77</td><td>95%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#ef4444"><td>2026-06-12</td><td>300136</td><td>信维通信</td><td>d1</td><td>📉 DOWN ⚡</td><td>-5.58</td><td>95%</td><td>+0.87%</td><td>❌</td></tr>
+<tr style="color:#10b981"><td>2026-06-12</td><td>002913</td><td>奥士康</td><td>d5</td><td>📈 UP ⚡</td><td>+6.51</td><td>95%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#10b981"><td>2026-06-12</td><td>002913</td><td>奥士康</td><td>d3</td><td>📈 UP ⚡</td><td>+4.57</td><td>95%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#10b981"><td>2026-06-12</td><td>002913</td><td>奥士康</td><td>d1</td><td>📈 UP ⚡</td><td>+4.84</td><td>95%</td><td>+10.00%</td><td>✅</td></tr>
+<tr style="color:#10b981"><td>2026-06-12</td><td>002050</td><td>三花智控</td><td>d5</td><td>📈 UP ⚡</td><td>+6.42</td><td>95%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#10b981"><td>2026-06-12</td><td>002050</td><td>三花智控</td><td>d3</td><td>📈 UP ⚡</td><td>+2.32</td><td>95%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#10b981"><td>2026-06-12</td><td>002050</td><td>三花智控</td><td>d1</td><td>📈 UP ⚡</td><td>+8.99</td><td>95%</td><td>+2.10%</td><td>✅</td></tr>
+<tr style="color:#ef4444"><td>2026-06-10</td><td>603228</td><td>景旺电子</td><td>d5</td><td>📉 DOWN ⚡</td><td>-2.01</td><td>95%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#6b7280"><td>2026-06-10</td><td>603228</td><td>景旺电子</td><td>d3</td><td>➖ NEUTRAL </td><td>-0.23</td><td>95%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#6b7280"><td>2026-06-10</td><td>603228</td><td>景旺电子</td><td>d1</td><td>➖ NEUTRAL </td><td>-0.91</td><td>95%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#ef4444"><td>2026-06-10</td><td>300136</td><td>信维通信</td><td>d5</td><td>📉 DOWN ⚡</td><td>-2.88</td><td>95%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#ef4444"><td>2026-06-10</td><td>300136</td><td>信维通信</td><td>d3</td><td>📉 DOWN ⚡</td><td>-2.48</td><td>95%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#6b7280"><td>2026-06-10</td><td>300136</td><td>信维通信</td><td>d1</td><td>➖ NEUTRAL </td><td>-1.84</td><td>95%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#ef4444"><td>2026-06-10</td><td>002913</td><td>奥士康</td><td>d5</td><td>📉 DOWN ⚡</td><td>-3.03</td><td>95%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#6b7280"><td>2026-06-10</td><td>002913</td><td>奥士康</td><td>d3</td><td>➖ NEUTRAL </td><td>-1.87</td><td>95%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#6b7280"><td>2026-06-10</td><td>002913</td><td>奥士康</td><td>d1</td><td>➖ NEUTRAL </td><td>-1.86</td><td>95%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#ef4444"><td>2026-06-10</td><td>002050</td><td>三花智控</td><td>d5</td><td>📉 DOWN ⚡</td><td>-2.20</td><td>95%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#6b7280"><td>2026-06-10</td><td>002050</td><td>三花智控</td><td>d3</td><td>➖ NEUTRAL </td><td>+0.11</td><td>95%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#6b7280"><td>2026-06-10</td><td>002050</td><td>三花智控</td><td>d1</td><td>➖ NEUTRAL </td><td>-0.71</td><td>95%</td><td>—</td><td>⏳</td></tr>
+<tr style="color:#10b981"><td>2026-06-09</td><td>603228</td><td>景旺电子</td><td>d1</td><td>📈 UP </td><td>+0.38</td><td>0.519%</td><td>+4.33%</td><td>❌</td></tr>
+<tr style="color:#ef4444"><td>2026-06-09</td><td>300136</td><td>信维通信</td><td>d1</td><td>📉 DOWN </td><td>-0.05</td><td>0.503%</td><td>-6.42%</td><td>❌</td></tr>
+<tr style="color:#10b981"><td>2026-06-09</td><td>002913</td><td>奥士康</td><td>d1</td><td>📈 UP </td><td>+0.36</td><td>0.518%</td><td>-4.34%</td><td>❌</td></tr>
+<tr style="color:#ef4444"><td>2026-06-09</td><td>002050</td><td>三花智控</td><td>d1</td><td>📉 DOWN </td><td>-0.09</td><td>0.504%</td><td>-4.49%</td><td>❌</td></tr>
+</table>
+<div class="footer">A股科技股量化分析 v3.0</div>
+</body></html>

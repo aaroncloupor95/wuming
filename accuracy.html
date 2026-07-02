@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>回测准确率 · A股量化看板</title>
+<style>
+:root {
+  --bg:#080c14; --card:#0f1520; --border:#1a2030;
+  --blue:#3b82f6; --green:#10b981; --red:#ef4444; --amber:#f59e0b;
+  --text:#e2e8f0; --t2:#94a3b8; --t3:#5a6478;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;font-size:14px}
+.wrap{max-width:900px;margin:0 auto;padding:24px 16px}
+
+/* nav */
+.nav{display:flex;align-items:center;gap:20px;padding-bottom:16px;border-bottom:1px solid var(--border);margin-bottom:24px}
+.nav a{color:var(--t2);text-decoration:none;font-size:14px;transition:color .2s}
+.nav a:hover,.nav a.active{color:var(--blue)}
+.nav .brand{font-weight:700;font-size:17px;color:var(--text);margin-right:auto}
+
+/* stat grid */
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:24px}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px;text-align:center}
+.stat-card .num{font-size:36px;font-weight:800;display:block}
+.stat-card .num.g{color:var(--green)}.stat-card .num.b{color:var(--blue)}.stat-card .num.a{color:var(--amber)}
+.stat-card .label{font-size:12px;color:var(--t2);margin-top:4px}
+.stat-card .sub{font-size:11px;color:var(--t3)}
+
+/* section */
+.sec{margin-bottom:28px}
+.sec h2{font-size:17px;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--border)}
+.sec p.desc{font-size:12px;color:var(--t2);margin-bottom:12px}
+
+/* tables */
+.tbl{width:100%;border-collapse:collapse;font-size:13px}
+.tbl th{text-align:left;padding:7px 12px;border-bottom:2px solid var(--border);color:var(--t2);font-weight:500;font-size:11px}
+.tbl td{padding:10px 12px;border-bottom:1px solid rgba(255,255,255,.04)}
+.tbl tr:hover{background:rgba(59,130,246,.03)}
+
+/* bar */
+.bar-wrap{display:flex;align-items:center;gap:8px}
+.bar-bg{flex:1;height:6px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden}
+.bar-fill{height:100%;border-radius:3px;transition:width .3s}
+.bar-fill.g{background:var(--green)}.bar-fill.b{background:var(--blue)}.bar-fill.a{background:var(--amber)}
+.bar-val{font-size:12px;font-weight:600;min-width:48px;text-align:right}
+
+/* version timeline */
+.timeline{position:relative;padding-left:24px}
+.timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:var(--border)}
+.tl-item{position:relative;padding:8px 0 16px}
+.tl-item::before{content:'';position:absolute;left:-20px;top:12px;width:10px;height:10px;border-radius:50%;background:var(--blue)}
+.tl-ver{font-weight:700;font-size:15px}
+.tl-meta{font-size:12px;color:var(--t2);margin-top:2px}
+.tl-note{font-size:12px;color:var(--t3);margin-top:1px}
+
+/* disclaimer */
+.disc{font-size:11px;color:var(--t3);padding:10px 12px;background:rgba(245,158,11,.06);border-left:3px solid var(--amber);border-radius:0 6px 6px 0;margin-top:20px}
+
+@media(max-width:640px){.stat-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="nav">
+  <span class="brand">📊 量化看板</span>
+  <a href="index.html">今日预测</a>
+  <a href="accuracy.html" class="active">回测准确率</a>
+</div>
+
+<!-- OVERVIEW -->
+<div class="stat-grid">
+  <div class="stat-card">
+    <span class="num g">85.0%</span>
+    <span class="label">高置信度方向准确率</span>
+    <span class="sub">覆盖率 5.6% · v2.5 模型</span>
+  </div>
+  <div class="stat-card">
+    <span class="num b">50.0%</span>
+    <span class="label">全量方向准确率</span>
+    <span class="sub">覆盖所有交易日 · 120天回测</span>
+  </div>
+  <div class="stat-card">
+    <span class="num a">4</span>
+    <span class="label">核心股票</span>
+    <span class="sub">120天回测 × 4只</span>
+  </div>
+  <div class="stat-card">
+    <span class="num">v3.0</span>
+    <span class="label">当前模型版本</span>
+    <span class="sub">d1/d3/d5 三层预测</span>
+  </div>
+</div>
+
+<!-- PER-STOCK ACCURACY (filtered) -->
+<div class="sec">
+  <h2>🎯 高置信度准确率 · 逐股票</h2>
+  <p class="desc">v2.5 模型，仅统计置信度最高的 5-7% 预测。非高频覆盖，追求高命中率。</p>
+  <table class="tbl">
+    <thead><tr><th>股票</th><th>代码</th><th>策略类型</th><th>方向准确率</th><th>覆盖率</th><th>最佳周期</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>景旺电子</strong></td><td>603228</td><td>均值回归</td>
+        <td><div class="bar-wrap"><div class="bar-bg"><div class="bar-fill g" style="width:83.3%"></div></div><span class="bar-val g">83.3%</span></div></td>
+        <td>5.0%</td><td>1日·高阈值</td>
+      </tr>
+      <tr>
+        <td><strong>信维通信</strong></td><td>300136</td><td>趋势跟随</td>
+        <td><div class="bar-wrap"><div class="bar-bg"><div class="bar-fill g" style="width:83.3%"></div></div><span class="bar-val g">83.3%</span></div></td>
+        <td>5.0%</td><td>3日·高阈值</td>
+      </tr>
+      <tr>
+        <td><strong>奥士康</strong></td><td>002913</td><td>弱均值回归</td>
+        <td><div class="bar-wrap"><div class="bar-bg"><div class="bar-fill g" style="width:87.5%"></div></div><span class="bar-val g">87.5%</span></div></td>
+        <td>6.7%</td><td>1日·高阈值</td>
+      </tr>
+      <tr>
+        <td><strong>三花智控</strong></td><td>002050</td><td>混合型</td>
+        <td><div class="bar-wrap"><div class="bar-bg"><div class="bar-fill g" style="width:85.7%"></div></div><span class="bar-val g">85.7%</span></div></td>
+        <td>5.8%</td><td>3日·中阈值</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- PER-STOCK ACCURACY (unfiltered) -->
+<div class="sec">
+  <h2>📊 全量方向准确率 · 逐股票</h2>
+  <p class="desc">120天回测，统计所有交易日的方向预测。无置信度过滤——包括低质量信号。反映模型的基础判断力。</p>
+  <table class="tbl">
+    <thead><tr><th>股票</th><th>代码</th><th>方向准确率</th><th>覆盖率</th><th>预测总数</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>景旺电子</strong></td><td>603228</td>
+        <td><div class="bar-wrap"><div class="bar-bg"><div class="bar-fill b" style="width:53.7%"></div></div><span class="bar-val">53.7%</span></div></td>
+        <td>45.0%</td><td>54</td>
+      </tr>
+      <tr>
+        <td><strong>信维通信</strong></td><td>300136</td>
+        <td><div class="bar-wrap"><div class="bar-bg"><div class="bar-fill b" style="width:49.3%"></div></div><span class="bar-val">49.3%</span></div></td>
+        <td>62.5%</td><td>75</td>
+      </tr>
+      <tr>
+        <td><strong>奥士康</strong></td><td>002913</td>
+        <td><div class="bar-wrap"><div class="bar-bg"><div class="bar-fill g" style="width:58.0%"></div></div><span class="bar-val g">58.0%</span></div></td>
+        <td>41.7%</td><td>50</td>
+      </tr>
+      <tr>
+        <td><strong>三花智控</strong></td><td>002050</td>
+        <td><div class="bar-wrap"><div class="bar-bg"><div class="bar-fill b" style="width:44.9%"></div></div><span class="bar-val">44.9%</span></div></td>
+        <td>40.8%</td><td>49</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- MODEL EVOLUTION -->
+<div class="sec">
+  <h2>🧬 模型进化时间线</h2>
+  <p class="desc">v1.0 到 v3.0 的准确率进化。120天回测基准。</p>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-ver">v1.0 — 起点</div>
+      <div class="tl-meta">6指标等权 · 自适应调整 · 3分类预测</div>
+      <div class="tl-note">总准确率 ~40%，556次预测224次正确</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-ver">v1.3 — 多维模型</div>
+      <div class="tl-meta">15+特征 · TOP8选择 · 高置信过滤 · 多维度+大盘</div>
+      <div class="tl-note">准确率从56.2%→67.1%→68.1%。t=0.5时acc=55-62%，t=0.8时acc=64-70%但覆盖率仅10-28%</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-ver">v2.0 — 过度工程化（失败）</div>
+      <div class="tl-meta">动态阈值 · 方向偏差惩罚 · 趋势强度自适应</div>
+      <div class="tl-note" style="color:var(--red)">准确率跌至32%。教训：简单模型胜出，切勿过度拟合</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-ver">v2.4 — 个性化特征</div>
+      <div class="tl-meta">每只股票独立特征集 · 滚动z-score标准化</div>
+      <div class="tl-note">全量准确率回升至~50%</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-ver">v2.5 — 高置信度过滤</div>
+      <div class="tl-meta">个性化权重+高置信过滤（覆盖率≥5%）</div>
+      <div class="tl-note" style="color:var(--green)">高置信度准确率85%，覆盖率5.6%。致命发现：平盘预测几乎无效（68次仅4次正确），放弃平盘</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-ver" style="color:var(--blue)">v3.0 — 多层预测 · 当前</div>
+      <div class="tl-meta">d1/d3/d5三层独立预测 · 每层独立权重+阈值</div>
+      <div class="tl-note">跨周期信号分析。d1用震荡指标，d3用动量，d5用趋势。实盘数据累积中。</div>
+    </div>
+  </div>
+</div>
+
+<!-- KEY LESSONS -->
+<div class="sec">
+  <h2>💡 核心发现</h2>
+  <table class="tbl">
+    <thead><tr><th>#</th><th>发现</th><th>影响</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>每只股票有不同性格 — 景旺/奥士康均值回归，信维趋势跟随，三花混合</td><td>必须个性化权重，统一模型效果差</td></tr>
+      <tr><td>2</td><td>日级别方向预测上限约65% — 纯价量数据的天花板</td><td>要突破75%需引入北向资金、龙虎榜、新闻情绪</td></tr>
+      <tr><td>3</td><td>平盘预测几乎无效 — v1.3发现68次平盘预测仅4次正确(5.9%)</td><td>v2.5起放弃平盘，仅做涨/跌二元预测</td></tr>
+      <tr><td>4</td><td>简单模型胜出 — v2.0过度工程化导致准确率从40%跌到32%</td><td>宁可保守简单，切勿过度拟合</td></tr>
+      <tr><td>5</td><td>高置信度可达85% — 但覆盖率仅5-7%</td><td>信号少但准。适合辅助判断，不适合高频交易</td></tr>
+      <tr><td>6</td><td>002913奥士康最难预测（信号弱噪声大），300136信维最可预测（趋势跟随高覆盖）</td><td>信维通信信号置信度最高</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="disc">
+  ⚠️ 回测数据来自120天历史模拟（约至2026-06-09），不代表未来表现。v3.0多层预测的实盘准确率待数据累积后更新。
+</div>
+
+</div>
+</body>
+</html>

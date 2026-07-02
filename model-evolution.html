@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>300136 信维通信 — 模型进化与诊断</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#070b14;color:#e5e7eb;font-family:-apple-system,sans-serif;padding:20px;max-width:1000px;margin:0 auto}
+h1{font-size:1.4em;margin-bottom:4px}
+h2{font-size:1.1em;color:#fff;margin:28px 0 12px;border-left:3px solid #3b82f6;padding-left:10px}
+h3{font-size:.95em;color:#9ca3af;margin:16px 0 8px}
+.disclaimer{background:#1f2937;color:#9ca3af;padding:10px 14px;border-radius:6px;font-size:.8em;margin:12px 0}
+table{width:100%;border-collapse:collapse;font-size:.85em;margin:12px 0}
+th{text-align:left;padding:8px 10px;color:#9ca3af;font-weight:500;border-bottom:1px solid #374151;font-size:.75em}
+td{padding:7px 10px;border-bottom:1px solid #1a2332}
+.good{color:#10b981}.bad{color:#ef4444}.neutral{color:#f59e0b}.muted{color:#6b7280}
+.card{background:#111827;border-radius:10px;padding:18px;margin:12px 0;border-left:3px solid}
+.card.green{border-left-color:#10b981}.card.red{border-left-color:#ef4444}.card.blue{border-left-color:#3b82f6}.card.amber{border-left-color:#f59e0b}
+.progress-bar{height:8px;background:#1f2937;border-radius:4px;margin-top:6px;overflow:hidden}
+.progress-fill{height:100%;border-radius:4px}
+.footer{text-align:center;color:#374151;font-size:.75em;margin-top:32px;padding-top:16px;border-top:1px solid #1f2937}
+.highlight{color:#fff;font-weight:600}
+</style>
+</head>
+<body>
+
+<h1>🔬 信维通信 300136 — 模型进化诊断</h1>
+<div class="disclaimer">⚠️ 仅为数据分析，不构成投资建议。100天滚动回测，纯技术面。</div>
+
+<h2>📊 四个版本对比</h2>
+<table>
+<thead><tr><th>版本</th><th>策略</th><th>d1准确率</th><th>覆盖率</th><th>信号数</th><th>NEUTRAL</th></tr></thead>
+<tbody>
+<tr><td>v1.0</td><td>趋势跟随 (MACD+MA+RSI+OBV)</td><td class="bad">47.9%</td><td>48%</td><td>48</td><td>52</td></tr>
+<tr><td>v2.0</td><td>反转形态 + 强制二元</td><td class="neutral">51.0%</td><td class="good">100%</td><td>100</td><td>0</td></tr>
+<tr><td>v3.0</td><td>6信号投票共识 + 大盘</td><td class="bad">37.5%</td><td>16%</td><td>16</td><td>84</td></tr>
+<tr><td>v4.0</td><td>市场状态自适应</td><td class="neutral">51.0%</td><td class="good">100%</td><td>100</td><td>0</td></tr>
+<tr style="background:#1a2332"><td><strong>vH</strong></td><td><strong>高波动选择性预测</strong></td><td class="good"><strong>63.0%</strong></td><td>27%</td><td><strong>27</strong></td><td>73</td></tr>
+</tbody>
+</table>
+
+<h2>💡 核心诊断</h2>
+
+<div class="card red">
+<h3>❌ d1 日级别方向预测天花板 ≈ 51%</h3>
+<p>四个不同策略，准确率在 37.5%-51.0% 之间。无论怎么优化，<span class="highlight">纯技术指标对次日涨跌的预测力极其有限</span>。</p>
+<div class="progress-bar"><div class="progress-fill" style="width:51%;background:#ef4444"></div></div>
+<p style="margin-top:8px;color:#9ca3af;font-size:.8em">即使完美模型也只有51%——A股日级别噪声淹没了所有技术信号。这不是模型的问题，是市场的本性。</p>
+</div>
+
+<div class="card green">
+<h3>✅ d5 五日趋势预测有效 — 67.1%</h3>
+<p>5天级别的趋势信号显著优于短期噪声。信维通信作为趋势跟随型股票，<span class="highlight">5日周期是预测的甜区</span>。</p>
+<div class="progress-bar"><div class="progress-fill" style="width:67.1%;background:#10b981"></div></div>
+<p style="margin-top:8px;color:#9ca3af;font-size:.8em">覆盖率73%，信号足够多。d5是我们真正可用的预测。</p>
+</div>
+
+<div class="card amber">
+<h3>⚡ 高波动日可达到 63%</h3>
+<p>当ATR大、日振幅高时，反转形态信号的有效性显著提升。<span class="highlight">选择性预测（只在27%的交易日出手）达到63%准确率</span>。</p>
+<div class="progress-bar"><div class="progress-fill" style="width:63%;background:#f59e0b"></div></div>
+<p style="margin-top:8px;color:#9ca3af;font-size:.8em">代价：73%的日子不预测（NEUTRAL）。质量换数量。</p>
+</div>
+
+<h2>📈 各特征与次日涨跌相关性</h2>
+<table>
+<thead><tr><th>指标</th><th>相关系数</th><th>解读</th></tr></thead>
+<tbody>
+<tr><td>ROC5 (5日动量)</td><td class="bad">-0.12</td><td>涨多了次日略跌（微弱均值回归）</td></tr>
+<tr><td>RSI</td><td class="good">+0.10</td><td>强股次日略强（微弱趋势延续）</td></tr>
+<tr><td>BB位置</td><td class="muted">-0.00</td><td>无效</td></tr>
+<tr><td>MACD</td><td class="muted">0.00</td><td>无效</td></tr>
+<tr><td>MA偏离</td><td class="muted">0.00</td><td>无效</td></tr>
+<tr><td>成交量比</td><td class="muted">0.00</td><td>无效</td></tr>
+<tr><td>连涨跌</td><td class="muted">0.00</td><td>无效</td></tr>
+<tr><td>ATR</td><td class="muted">0.00</td><td>无效</td></tr>
+<tr><td>OBV动量</td><td class="muted">0.00</td><td>无效</td></tr>
+</tbody>
+</table>
+
+<h2>🧠 为什么d1这么难？</h2>
+
+<div class="card blue">
+<p><span class="highlight">技术指标反映的是"已经发生的事"，而次日涨跌由"即将发生的事"决定。</span></p>
+<p style="margin-top:8px">明天涨不涨，取决于明早的新闻、大盘情绪、主力资金动向、板块轮动——这些东西K线图上全都没有。技术分析的本质是归纳过去的规律，但A股短线波动的主要驱动力是信息流和资金流。</p>
+</div>
+
+<h2>🎯 实战建议</h2>
+
+<table>
+<thead><tr><th>策略</th><th>用法</th><th>准确率</th></tr></thead>
+<tbody>
+<tr><td><strong>d5趋势方向</strong></td><td>判断5天级别走向，决定持仓方向</td><td class="good">67%</td></tr>
+<tr><td><strong>d1 高波动信号</strong></td><td>剧烈波动日辅助判断（覆盖率27%）</td><td class="good">63%</td></tr>
+<tr><td><strong>d1 日常方向</strong></td><td>仅供参考，不依赖（≈抛硬币）</td><td class="neutral">51%</td></tr>
+</tbody>
+</table>
+
+<div class="footer">信维通信 300136 模型诊断报告 | 生成于 2026-06-30</div>
+
+</body>
+</html>

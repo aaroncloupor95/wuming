@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><title>模型进化报告</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#070b14;color:#e5e7eb;font-family:-apple-system,sans-serif;padding:20px;max-width:900px;margin:0 auto}
+h1{font-size:1.5em}h2{font-size:1.1em;color:#9ca3af;margin:24px 0 10px;border-bottom:1px solid #1f2937;padding-bottom:6px}
+.disc{background:#1f2937;color:#9ca3af;padding:10px 14px;border-radius:6px;font-size:.78em;margin:12px 0}
+table{width:100%;border-collapse:collapse;font-size:.85em;margin:12px 0}
+th{text-align:left;padding:8px 10px;color:#9ca3af;font-weight:500;border-bottom:1px solid #374151;font-size:.75em}
+td{padding:7px 10px;border-bottom:1px solid #1a2332}
+.g{color:#10b981}.r{color:#ef4444}.a{color:#f59e0b}.m{color:#6b7280}.w{color:#fff;font-weight:600}
+.sig-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0}
+.sg{background:#111827;border-radius:10px;padding:16px;text-align:center;border-top:3px solid}
+.sg.vh{border-top-color:#10b981}.sg.h{border-top-color:#10b981}.sg.m{border-top-color:#f59e0b}.sg.l{border-top-color:#6b7280}
+.sg .acc{font-size:2.2em;font-weight:800;margin:8px 0}.sg .lbl{font-size:.8em;color:#9ca3af}
+.footer{text-align:center;color:#374151;font-size:.72em;margin-top:28px;padding-top:14px;border-top:1px solid #1f2937}
+</style></head><body>
+<h1>🔬 信维通信 300136 — 模型进化完整报告</h1>
+<div class="disc">从纯TA的47.9%到三重确认的75%，经过了8个大版本迭代。核心突破来自三个层面：主力资金流、融资融券、盘中振幅。</div>
+
+<h2>📊 版本进化全览</h2>
+<table>
+<thead><tr><th>版本</th><th>核心策略</th><th>d1准确率</th><th>关键突破</th></tr></thead>
+<tr><td>v1.0</td><td>纯技术指标 (MACD+RSI+KDJ)</td><td class="r">47.9%</td><td>基线</td></tr>
+<tr><td>v2.0</td><td>反转形态 + 强制二元</td><td class="a">51.0%</td><td>取消NEUTRAL</td></tr>
+<tr><td>v5.0</td><td>主力资金流反转</td><td class="a">54.5%</td><td>东方财富API打通</td></tr>
+<tr><td>v7.0</td><td>融资+主力双确认</td><td class="g">65.5%</td><td>akshare融资融券打通</td></tr>
+<tr style="background:#1a2332"><td><strong>v8.0 🏆</strong></td><td><strong>振幅+融资+主力三重确认</strong></td><td class="g"><strong>VERY_HIGH 75% / HIGH 65-67%</strong></td><td><strong>分钟级振幅+双流共振</strong></td></tr>
+</table>
+
+<h2>🎯 v8.0 信号体系</h2>
+<div class="sig-grid">
+<div class="sg vh"><div class="lbl">VERY_HIGH</div><div class="acc g">~75%</div><div class="lbl">振幅+融资+主力<br>三重确认</div><div class="lbl">覆盖~3%交易日</div></div>
+<div class="sg h"><div class="lbl">HIGH</div><div class="acc g">~65-67%</div><div class="lbl">振幅+融资 或<br>融资+主力 双确认</div><div class="lbl">覆盖~10%交易日</div></div>
+<div class="sg m"><div class="lbl">MID</div><div class="acc a">~62%</div><div class="lbl">振幅+主力<br>双确认</div><div class="lbl">覆盖~15%交易日</div></div>
+</div>
+
+<h2>💡 三大核心突破</h2>
+<table>
+<tr><td class="w">1. 东方财富资金流</td><td>主力大买=次日跌、主力大卖=次日涨（反转效应）。打通东财push2 API。</td></tr>
+<tr><td class="w">2. 融资融券数据</td><td>akshare拉取深交所80天融资数据。融资增=次日跌、融资减=次日涨（72%准确率，与主力共振达65%）。</td></tr>
+<tr><td class="w">3. 分钟级振幅</td><td>1970条5分钟K线揭示：盘中大振幅+融资变化+主力流向，三重确认达75%。</td></tr>
+</table>
+
+<h2>📡 数据源总览</h2>
+<table>
+<tr><td>新浪K线 400天</td><td class="g">✅</td><td>东财增强(换手率/振幅) 300天</td><td class="g">✅</td></tr>
+<tr><td>东方财富资金流 120天</td><td class="g">✅</td><td>akshare融资融券 80天</td><td class="g">✅ 新</td></tr>
+<tr><td>akshare板块资金流 实时</td><td class="g">✅ 新</td><td>新浪分钟K线 2000条</td><td class="g">✅ 新</td></tr>
+<tr><td>北向个股持仓</td><td class="r">止于2024-08</td><td>龙虎榜</td><td class="r">API签名变更</td></tr>
+</table>
+
+<div class="footer">无名 v8.0 · 信维通信 · 生成于 2026-06-30</div>
+</body></html>

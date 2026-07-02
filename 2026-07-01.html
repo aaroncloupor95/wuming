@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>300136 信维通信 — 预测与回测</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#070b14;color:#e5e7eb;font-family:-apple-system,sans-serif;padding:20px;max-width:1200px;margin:0 auto}
+h1{font-size:1.5em}h2{font-size:1.05em;color:#9ca3af;margin:24px 0 10px;border-bottom:1px solid #1f2937;padding-bottom:6px}
+.disc{background:#1f2937;color:#9ca3af;padding:10px 14px;border-radius:6px;font-size:.75em;margin:12px 0}
+.today-section{background:linear-gradient(135deg,#111827,#1e293b);border-radius:12px;padding:20px;margin:16px 0;border:1px solid #1f2937}
+.today-title{font-size:.9em;color:#9ca3af;margin-bottom:14px;text-align:center}
+.today-price{text-align:center;font-size:2.5em;font-weight:800;color:#fff;margin-bottom:16px}
+.today-date{font-size:.7em;color:#6b7280}
+.pred-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.pc{background:#0f1520;border-radius:10px;padding:16px;text-align:center}
+.pc .pdate{font-size:.8em;color:#9ca3af;margin-bottom:6px}
+.pc .pdir{font-size:1.3em;font-weight:700;margin-bottom:8px}
+.pc .ptarget{font-size:.85em;color:#9ca3af;margin-bottom:6px}
+.pc .pband{font-size:.78em;color:#9ca3af;margin-bottom:6px}
+.pc .preason{font-size:.72em;color:#6b7280;margin-bottom:4px;line-height:1.4}
+.pc .plevel{font-size:.7em;color:#6b7280}
+.stats-row{display:flex;gap:10px;margin:14px 0;flex-wrap:wrap}
+.sb{background:#111827;border-radius:8px;padding:14px 16px;text-align:center;min-width:100px;flex:1}
+.sb .sv{font-size:1.6em;font-weight:800}.sb .sl{font-size:.68em;color:#9ca3af;margin-top:3px}
+.error-bar{display:flex;gap:2px;height:20px;align-items:flex-end;margin:8px 0}
+.error-dot{flex:1;min-width:3px;border-radius:2px 2px 0 0}
+table{width:100%;border-collapse:collapse;font-size:.74em;margin:8px 0}
+th{text-align:left;padding:6px 6px;color:#9ca3af;font-weight:500;border-bottom:1px solid #374151;font-size:.66em;position:sticky;top:0;background:#070b14}
+td{padding:5px 6px;border-bottom:1px solid #1a2332}
+tr:hover{background:#111827}
+.g{color:#10b981}.r{color:#ef4444}.y{color:#f59e0b}.m{color:#6b7280}.w{color:#fff;font-weight:600}
+.ft{text-align:center;color:#374151;font-size:.7em;margin-top:28px;padding-top:14px;border-top:1px solid #1f2937}
+</style>
+</head>
+<body>
+
+<h1>📊 信维通信 300136 — 预测与回测</h1>
+<div class="disc">⚠️ 仅数据分析，不构成投资建议。红涨绿跌。v13 K线形态+主力行为+量价关系。</div>
+
+<div class="today-section">
+<div class="today-title">📌 最新预测</div>
+<div class="today-price" id="today-close"></div>
+<div class="pred-cards" id="today-cards"></div>
+</div>
+
+<div class="stats-row" id="stats"></div>
+
+<h2>📊 100天 d1 回测明细</h2>
+<table>
+<thead><tr>
+<th>日期</th><th>收盘</th><th>预测</th><th>目标价</th><th>实际</th><th>涨跌</th><th>结果</th><th>偏差</th><th>信号来源</th>
+</tr></thead>
+<tbody id="tbody"></tbody>
+</table>
+
+<div class="ft">信维通信 300136 · K线形态+主力行为模型 · 2026-07-01</div>
+
+<script>
+const DATA = [{"date":"2026-02-13","close":85.42,"d1":{"pred":"UP","pred_target":86.28,"actual_close":87.03,"actual_chg":1.88,"reasons":"锤子线↑ + 超卖↑","level":"HIGH","conf":75}},{"date":"2026-02-14","close":87.03,"d1":{"pred":"UP","pred_target":87.9,"actual_close":89.42,"actual_chg":2.75,"reasons":"综合信号","level":"LOW","conf":55}},{"date":"2026-02-17","close":89.42,"d1":{"pred":"UP","pred_target":89.87,"actual_close":89.84,"actual_chg":0.47,"reasons":"综合信号","level":"NONE","conf":51}},{"date":"2026-02-18","close":89.84,"d1":{"pred":"DOWN","pred_target":89.39,"actual_close":88.11,"actual_chg":-1.93,"reasons":"光头阳线↓","level":"LOW","conf":55}},{"date":"2026-02-19","close":88.11,"d1":{"pred":"DOWN","pred_target":87.67,"actual_close":87.62,"actual_chg":-0.56,"reasons":"综合信号","level":"NONE","conf":51}},{"date":"2026-02-20","close":87.62,"d1":{"pred":"DOWN","pred_target":87.18,"actual_close":84.95,"actual_chg":-3.05,"reasons":"涨缩量↓ + 超买↓","level":"MID","conf":65}},{"date":"2026-02-21","close":84.95,"d1":{"pred":"DOWN","pred_target":84.53,"actual_close":82.87,"actual_chg":-2.45,"reasons":"价跌量增↓ + 锤子线↑","level":"MID","conf":65}},{"date":"2026-02-24","close":82.87,"d1":{"pred":"UP","pred_target":84.53,"actual_close":82.4,"actual_chg":-0.57,"reasons":"倒锤子↑ + 光脚阴↑","level":"MID","conf":65}},{"date":"2026-02-25","close":82.4,"d1":{"pred":"UP","pred_target":83.23,"actual_close":82.32,"actual_chg":-0.1,"reasons":"光脚阴↑ + 价跌量缩↑","level":"MID","conf":65}},{"date":"2026-02-26","close":82.32,"d1":{"pred":"UP","pred_target":83.97,"actual_close":80.74,"actual_chg":-1.92,"reasons":"光脚阴↑","level":"LOW","conf":55}},{"date":"2026-02-27","close":80.74,"d1":{"pred":"DOWN","pred_target":80.36,"actual_close":81.28,"actual_chg":0.67,"reasons":"综合信号","level":"NONE","conf":51}},{"date":"2026-02-28","close":81.28,"d1":{"pred":"DOWN","pred_target":79.65,"actual_close":82.72,"actual_chg":1.77,"reasons":"融资大增↓","level":"LOW","conf":55}},{"date":"2026-03-03","close":82.72,"d1":{"pred":"DOWN","pred_target":82.3,"actual_close":81.43,"actual_chg":-1.56,"reasons":"上吊线↓ + 光头阳线↓","level":"HIGH","conf":75}},{"date":"2026-03-04","close":81.43,"d1":{"pred":"UP","pred_target":83.06,"actual_close":79.0,"actual_chg":-2.99,"reasons":"启明星↑","level":"LOW","conf":55}},{"date":"2026-03-05","close":79.0,"d1":{"pred":"DOWN","pred_target":78.62,"actual_close":79.88,"actual_chg":1.11,"reasons":"综合信号","level":"NONE","conf":51}},{"date":"2026-03-06","close":79.88,"d1":{"pred":"DOWN","pred_target":78.27,"actual_close":83.65,"actual_chg":4.72,"reasons":"涨缩量↓","level":"LOW","conf":55}},{"date":"2026-03-07","close":83.65,"d1":{"pred":"DOWN","pred_target":83.23,"actual_close":83.44,"actual_chg":-0.25,"reasons":"综合信号","level":"NONE","conf":51}},{"date":"2026-03-10","close":83.44,"d1":{"pred":"DOWN","pred_target":81.77,"actual_close":82.3,"actual_chg":-1.37,"reasons":"价跌量增↓","level":"HIGH","conf":75}},{"date":"2026-03-11","close":82.3,"d1":{"pred":"DOWN","pred_target":81.89,"actual_close":86.86,"actual_chg":5.54,"reasons":"综合信号","level":"NONE","conf":51}},{"date":"2026-03-12","close":86.86,"d1":{"pred":"DOWN","pred_target":85.12,"actual_close":90.2,"actual_chg":3.85,"reasons":"价跌量增↓ + 融资大增↓","level":"HIGH","conf":75}},{"date":"2026-03-13","close":90.2,"d1":{"pred":"DOWN","pred_target":89.74,"actual_close":87.94,"actual_chg":-2.51,"reasons":"涨缩量↓","level":"LOW","conf":55}},{"date":"2026-03-14","close":87.94,"d1":{"pred":"DOWN","pred_target":87.5,"actual_close":85.36,"actual_chg":-2.93,"reasons":"综合信号","level":"NONE","conf":51}},{"date":"2026-03-17","close":85.36,"d1":{"pred":"DOWN","pred_target":84.94,"actual_close":83.74,"actual_chg":-1.9,"reasons":"综合信号","level":"NONE","conf":51}},{"date":"2026-03-18","close":83.74,"d1":{"pred":"DOWN","pred_target":81.22,"actual_close":82.45,"actual_chg":-1.54,"reasons":"上吊线↓ + 光头阳线↓","level":"HIGH","conf":75}},{"date":"2026-03-19","close":82.45,"d1":{"pred":"UP","pred_target":83.29,"actual_close":81.67,"actual_chg":-0.95,"reasons":"倒锤子↑","level":"LOW","conf":55}},{"date":"2026-03-20","close":81.67,"d1":{"pred":"UP","pred_target":83.3,"actual_close":79.84,"actual_chg":-2.24,"reasons":"锤子线↑ + 大振幅收低位↑","level":"VERY_HIGH","conf":85}},{"date":"2026-03-21","close":79.84,"d1":{"pred":"DOWN","pred_target":79.45,"actual_close":79.93,"actual_chg":0.11,"reasons":"综合信号","level":"NONE","conf":51}},{"date":"2026-03-24","close":79.93,"d1":{"pred":"UP","pred_target":80.75,"actual_close":79.68,"actual_chg":-0.31,"reasons":"综合信号","level":"NONE","conf":51}},{"date":"2026-03-25","close":79.68,"d1":{"pred":"UP","pred_target":80.49,"actual_close":80.5,"actual_chg":1.03,"reasons":"倒锤子↑ + 光脚阴↑","level":"MID","conf":65}},{"date":"2026-03-26","close":80.5,"d1":{"pred":"DOWN","pred_target":80.1,"actual_close":81.25,"actual_chg":0.93,"reasons":"涨缩量↓","level":"LOW","conf":55}},{"date":"2026-03-27","close":81.25,"d1":{"pred":"UP","pred_target":82.07,"actual_close":79.7,"actual_chg":-1.91,"reasons":"综合信号","level":"NONE","conf":51}},{"date":"2026-03-28","close":79.7,"d1":{"pred":"UP","pred_target":81.3,"actual_close":79.1,"actual_chg":-0.75,"reasons":"锤子线↑ + 光脚阴↑","level":"MID","conf":65}},{"date":"2026-03-31","close":79.1,"d1":{"pred":"DOWN","pred_target":77.52,"actual_close":79.27,"actual_chg":0.22,"reasons":"融资大增↓","level":"LOW","conf":55}},{"date":"2026-04-01","close":79.27,"d1":{"pred":"UP","pred_target":80.89,"actual_close":80.4,"actual_chg":1.43,"reasons":"启明星↑ + 融资大减↑","level":"MID","conf":65}},{"date":"2026-04-02","close":80.4,"d1":{"pred":"DOWN","pred_target":78.79,"actual_close":83.48,"actual_chg":3.83,"reasons":"融资大增↓","level":"LOW","conf":55}},{"date":"2026-04-03","close":83.48,"d1":{"pred":"DOWN","pred_target":83.06,"actual_close":81.6,"actual_chg":-2.25,"reasons":"涨缩量↓","level":"LOW","conf":55}},{"date":"2026-04-07","close":81.6,"d1":{"pred":"DOWN","pred_target":81.2,"actual_close":75.38,"actual_chg":-7.62,"reasons":"光头阳线↓","level":"LOW","conf":55}},{"date":"2026-04-08","close":75.38,"d1":{"pred":"DOWN","pred_target":75.01,"actual_close":78.93,"actual_chg":4.71,"reasons":"综合信号","level":"NONE","conf":51}},{"date":"2026-04-09","close":78.93,"d1":{"pred":"DOWN","pred_target":78.54,"actual_close":80.45,"actual_chg":1.93,"reasons":"综合信号","level":"NONE","conf":51}},{"date":"2026-04-10","close":80.45,"d1":{"pred":"UP","pred_target":81.26,"actual_close":82.6,"actual_chg":2.67,"reasons":"综合信号","level":"NONE","conf":51}},{"date":"2026-04-11","close":82.6,"d1":{"pred":"DOWN","pred_target":82.19,"actual_close":81.64,"actual_chg":-1.16,"reasons":"综合信号","level":"NONE","conf":51}},{"date":"2026-04-14","close":81.64,"d1":{"pred":"DOWN","pred_target":81.23,"actual_close":82.69,"actual_chg":1.29,"reasons":"综合信号","level":"NONE","conf":51}},{"date":"2026-04-15","close":82.69,"d1":{"pred":"UP","pred_target":83.52,"actual_close":83.61,"actual_chg":1.11,"reasons":"综合信号","level":"NONE","conf":51}},{"date":"2026-04-16","close":83.61,"d1":{"pred":"DOWN","pred_target":83.2,"actual_close":82.67,"actual_chg":-1.12,"reasons":"综合信号","level":"NONE","conf":51}},{"date":"2026-04-17","close":82.67,"d1":{"pred":"UP","pred_target":83.5,"actual_close":80.85,"actual_chg":-2.2,"reasons":"综合信号","level":"NONE","conf":51}},{"date":"2026-04-18","close":80.85,"d1":{"pred":"UP","pred_target":81.67,"actual_close":81.54,"actual_chg":0.85,"reasons":"综合信号","level":"NONE","conf":51}},{"date":"2026-04-21","close":81.54,"d1":{"pred":"DOWN","pred_target":81.14,"actual_close":79.52,"actual_chg":-2.48,"reasons":"综合信号","level":"NONE","conf":51}},{"date":"2026-04-22","close":79.52,"d1":{"pred":"DOWN","pred_target":77.93,"actual_close":83.41,"actual_chg":4.89,"reasons":"融资大增↓","level":"LOW","conf":55}},{"date":"2026-04-23","close":83.41,"d1":{"pred":"DOWN","pred_target":82.99,"actual_close":81.3,"actual_chg":-2.53,"reasons":"光头阳线↓ + 上吊线↓","level":"HIGH","conf":75}},{"date":"2026-04-24","close":81.3,"d1":{"pred":"UP","pred_target":82.96,"actual_close":83.25,"actual_chg":2.4,"reasons":"锤子线↑ + 光脚阴↑","level":"HIGH","conf":75}},{"date":"2026-04-25","close":83.25,"d1":{"pred":"DOWN","pred_target":81.59,"actual_close":85.0,"actual_chg":2.1,"reasons":"涨缩量↓","level":"LOW","conf":55}},{"date":"2026-04-28","close":85.0,"d1":{"pred":"DOWN","pred_target":84.58,"actual_close":87.08,"actual_chg":2.45,"reasons":"综合信号","level":"NONE","conf":51}},{"date":"2026-04-29","close":87.08,"d1":{"pred":"DOWN","pred_target":85.33,"actual_close":91.3,"actual_chg":4.85,"reasons":"价跌量增↓ + 融资大增↓","level":"HIGH","conf":75}},{"date":"2026-04-30","close":91.3,"d1":{"pred":"DOWN","pred_target":90.84,"actual_close":97.23,"actual_chg":6.5,"reasons":"光头阳线↓","level":"LOW","conf":55}},{"date":"2026-05-05","close":97.23,"d1":{"pred":"DOWN","pred_target":96.75,"actual_close":101.4,"actual_chg":4.29,"reasons":"涨缩量↓","level":"LOW","conf":55}},{"date":"2026-05-06","close":101.4,"d1":{"pred":"DOWN","pred_target":100.9,"actual_close":101.9,"actual_chg":0.49,"reasons":"涨缩量↓ + 光头阳线↓","level":"MID","conf":65}},{"date":"2026-05-07","close":101.9,"d1":{"pred":"DOWN","pred_target":100.88,"actual_close":107.55,"actual_chg":5.55,"reasons":"融资大增↓","level":"LOW","conf":55}},{"date":"2026-05-08","close":107.55,"d1":{"pred":"UP","pred_target":108.6,"actual_close":114.13,"actual_chg":6.12,"reasons":"综合信号","level":"NONE","conf":51}},{"date":"2026-05-09","close":114.13,"d1":{"pred":"DOWN","pred_target":112.93,"actual_close":109.68,"actual_chg":-3.9,"reasons":"光头阳线↓","level":"LOW","conf":55}},{"date":"2026-05-12","close":109.68,"d1":{"pred":"DOWN","pred_target":106.39,"actual_close":113.7,"actual_chg":3.67,"reasons":"融资大增↓","level":"LOW","conf":55}},{"date":"2026-05-13","close":113.7,"d1":{"pred":"DOWN","pred_target":111.72,"actual_close":102.51,"actual_chg":-9.84,"reasons":"价跌量增↓ + 融资+主力双反转↓","level":"HIGH","conf":75}},{"date":"2026-05-14","close":102.51,"d1":{"pred":"DOWN","pred_target":99.43,"actual_close":99.61,"actual_chg":-2.83,"reasons":"融资大增↓","level":"LOW","conf":55}},{"date":"2026-05-15","close":99.61,"d1":{"pred":"UP","pred_target":100.61,"actual_close":111.75,"actual_chg":12.19,"reasons":"综合信号","level":"NONE","conf":51}},{"date":"2026-05-16","close":111.75,"d1":{"pred":"DOWN","pred_target":110.63,"actual_close":111.0,"actual_chg":-0.67,"reasons":"涨缩量↓","level":"LOW","conf":55}},{"date":"2026-05-19","close":111.0,"d1":{"pred":"DOWN","pred_target":110.44,"actual_close":112.4,"actual_chg":1.26,"reasons":"综合信号","level":"NONE","conf":51}},{"date":"2026-05-20","close":112.4,"d1":{"pred":"DOWN","pred_target":111.84,"actual_close":109.55,"actual_chg":-2.54,"reasons":"涨缩量↓","level":"LOW","conf":55}},{"date":"2026-05-21","close":109.55,"d1":{"pred":"UP","pred_target":110.65,"actual_close":118.98,"actual_chg":8.61,"reasons":"综合信号","level":"NONE","conf":51}},{"date":"2026-05-22","close":118.98,"d1":{"pred":"DOWN","pred_target":118.39,"actual_close":118.63,"actual_chg":-0.29,"reasons":"综合信号","level":"NONE","conf":51}},{"date":"2026-05-23","close":118.63,"d1":{"pred":"DOWN","pred_target":118.04,"actual_close":110.33,"actual_chg":-7.0,"reasons":"综合信号","level":"NONE","conf":51}},{"date":"2026-05-26","close":110.33,"d1":{"pred":"DOWN","pred_target":109.01,"actual_close":111.98,"actual_chg":1.5,"reasons":"融资大增↓","level":"LOW","conf":55}},{"date":"2026-05-27","close":111.98,"d1":{"pred":"DOWN","pred_target":111.42,"actual_close":113.68,"actual_chg":1.52,"reasons":"综合信号","level":"NONE","conf":51}},{"date":"2026-05-28","close":113.68,"d1":{"pred":"DOWN","pred_target":113.11,"actual_close":98.65,"actual_chg":-13.22,"reasons":"综合信号","level":"NONE","conf":51}},{"date":"2026-05-29","close":98.65,"d1":{"pred":"UP","pred_target":100.62,"actual_close":91.53,"actual_chg":-7.22,"reasons":"锤子线↑ + 倒锤子↑","level":"MID","conf":65}},{"date":"2026-05-30","close":91.53,"d1":{"pred":"UP","pred_target":93.36,"actual_close":91.97,"actual_chg":0.48,"reasons":"锤子线↑ + 光脚阴↑","level":"MID","conf":65}},{"date":"2026-06-02","close":91.97,"d1":{"pred":"UP","pred_target":93.81,"actual_close":95.6,"actual_chg":3.95,"reasons":"锤子线↑ + 超卖↑","level":"HIGH","conf":75}},{"date":"2026-06-03","close":95.6,"d1":{"pred":"UP","pred_target":96.56,"actual_close":98.0,"actual_chg":2.51,"reasons":"启明星↑","level":"LOW","conf":55}},{"date":"2026-06-04","close":98.0,"d1":{"pred":"DOWN","pred_target":97.51,"actual_close":106.33,"actual_chg":8.5,"reasons":"综合信号","level":"NONE","conf":51}},{"date":"2026-06-05","close":106.33,"d1":{"pred":"DOWN","pred_target":105.01,"actual_close":103.65,"actual_chg":-2.52,"reasons":"融资+主力双反转↓","level":"HIGH","conf":75}},{"date":"2026-06-06","close":103.65,"d1":{"pred":"DOWN","pred_target":103.15,"actual_close":103.0,"actual_chg":-0.63,"reasons":"综合信号","level":"NONE","conf":51}},{"date":"2026-06-09","close":103.0,"d1":{"pred":"DOWN","pred_target":102.49,"actual_close":96.39,"actual_chg":-6.42,"reasons":"综合信号","level":"NONE","conf":51}},{"date":"2026-06-10","close":96.39,"d1":{"pred":"UP","pred_target":97.36,"actual_close":99.28,"actual_chg":3.0,"reasons":"综合信号","level":"NONE","conf":51}},{"date":"2026-06-11","close":99.28,"d1":{"pred":"DOWN","pred_target":97.29,"actual_close":96.86,"actual_chg":-2.44,"reasons":"融资大增↓","level":"LOW","conf":55}},{"date":"2026-06-12","close":96.86,"d1":{"pred":"DOWN","pred_target":96.37,"actual_close":97.7,"actual_chg":0.87,"reasons":"综合信号","level":"NONE","conf":51}},{"date":"2026-06-13","close":97.7,"d1":{"pred":"UP","pred_target":98.68,"actual_close":100.16,"actual_chg":2.52,"reasons":"综合信号","level":"NONE","conf":51}},{"date":"2026-06-16","close":100.16,"d1":{"pred":"DOWN","pred_target":99.66,"actual_close":105.56,"actual_chg":5.39,"reasons":"综合信号","level":"NONE","conf":51}},{"date":"2026-06-17","close":105.56,"d1":{"pred":"UP","pred_target":107.67,"actual_close":107.45,"actual_chg":1.79,"reasons":"综合信号","level":"NONE","conf":51}},{"date":"2026-06-18","close":107.45,"d1":{"pred":"DOWN","pred_target":106.92,"actual_close":99.32,"actual_chg":-7.57,"reasons":"综合信号","level":"NONE","conf":51}},{"date":"2026-06-19","close":99.32,"d1":{"pred":"UP","pred_target":100.31,"actual_close":95.48,"actual_chg":-3.87,"reasons":"大振幅收低位↑","level":"VERY_HIGH","conf":85}},{"date":"2026-06-20","close":95.48,"d1":{"pred":"UP","pred_target":97.38,"actual_close":103.12,"actual_chg":8.0,"reasons":"锤子线↑ + 光脚阴↑ + 超卖↑","level":"VERY_HIGH","conf":85}},{"date":"2026-06-23","close":103.12,"d1":{"pred":"UP","pred_target":105.23,"actual_close":116.73,"actual_chg":13.2,"reasons":"综合信号","level":"NONE","conf":51}},{"date":"2026-06-24","close":116.73,"d1":{"pred":"DOWN","pred_target":116.14,"actual_close":118.19,"actual_chg":1.25,"reasons":"综合信号","level":"NONE","conf":51}},{"date":"2026-06-25","close":118.19,"d1":{"pred":"UP","pred_target":120.58,"actual_close":116.75,"actual_chg":-1.22,"reasons":"综合信号","level":"NONE","conf":51}},{"date":"2026-06-26","close":116.75,"d1":{"pred":"DOWN","pred_target":116.17,"actual_close":119.25,"actual_chg":2.14,"reasons":"综合信号","level":"NONE","conf":51}}];
+const TODAY = {"close":119.25,"date":"2026-06-30","d1":{"direction":"DOWN","target":118.66,"low":115.38,"high":121.94,"band":5.5,"conf":51,"level":"NONE","reasons":"综合信号","date_label":"2026-07-01 (明日)"},"d3":{"direction":"DOWN","target":117.49,"low":112.37,"high":122.61,"band":8.7,"conf":51,"level":"NONE","reasons":"综合信号","date_label":"2026-07-03 (3日后)"},"d5":{"direction":"DOWN","target":116.32,"low":109.06,"high":123.58,"band":12.5,"conf":51,"level":"NONE","reasons":"综合信号","date_label":"2026-07-07 (5日后)"}};
+
+function reasonText(r) {
+  return r.reasons || '综合信号';
+}
+
+function render() {
+  document.getElementById('today-close').innerHTML = TODAY.close + ' <span class="today-date">'+TODAY.date+' 收盘</span>';
+  
+  const cards = document.getElementById('today-cards');
+  const dirNames = {UP:'上涨',UP_WEAK:'偏涨',DOWN:'下跌',DOWN_WEAK:'偏跌',NEUTRAL:'方向不明'};
+  const levelNames = {VERY_HIGH:'🔥 极强',HIGH:'🟢 强',MID:'🟡 中等',LOW:'🔵 弱',NONE:'⚪ 综合'};
+  
+  ['d1','d3','d5'].forEach(h => {
+    const p = TODAY[h]; if (!p) return;
+    const d = p.direction;
+    const c = d.startsWith('UP') ? '#ef4444' : (d.startsWith('DOWN') ? '#10b981' : '#6b7280');
+    const icon = d.startsWith('UP') ? '📈' : (d.startsWith('DOWN') ? '📉' : '➖');
+    cards.innerHTML += '<div class="pc">'+
+      '<div class="pdate">'+p.date_label+'</div>'+
+      '<div class="pdir" style="color:'+c+'">'+icon+' '+dirNames[d]+'</div>'+
+      '<div class="ptarget">🎯 目标价 <span style="color:'+c+';font-size:1.3em;font-weight:800">'+p.target+'</span></div>'+
+      '<div class="pband">📏 '+p.low+' ~ '+p.high+' (±'+(p.band/2).toFixed(1)+'%)</div>'+
+      '<div class="preason">'+reasonText(p)+'</div>'+
+      '<div class="plevel">'+levelNames[p.level]+' · 置信'+p.conf+'%</div>'+
+    '</div>';
+  });
+
+  const s = document.getElementById('stats');
+  const n = DATA.length;
+  let c=0;
+  DATA.forEach(r => {
+    if ((r.d1.pred==='UP' && r.d1.actual_chg>0) || (r.d1.pred==='DOWN' && r.d1.actual_chg<0)) c++;
+  });
+  const vh = DATA.filter(r=>r.d1.level==='VERY_HIGH');
+  const vhc = vh.filter(r=>(r.d1.pred==='UP'&&r.d1.actual_chg>0)||(r.d1.pred==='DOWN'&&r.d1.actual_chg<0)).length;
+  const hh = DATA.filter(r=>['VERY_HIGH','HIGH'].includes(r.d1.level));
+  const hhc = hh.filter(r=>(r.d1.pred==='UP'&&r.d1.actual_chg>0)||(r.d1.pred==='DOWN'&&r.d1.actual_chg<0)).length;
+  const acc = (v,t) => t>0 ? (v/t*100).toFixed(1) : '—';
+  
+  s.innerHTML = 
+    '<div class="sb"><div class="sl">d1 全量</div><div class="sv" style="color:#3b82f6">'+acc(c,n)+'%</div><div class="sl">'+c+'/'+n+'</div></div>'+
+    '<div class="sb"><div class="sl">d1 VERY_HIGH</div><div class="sv" style="color:#10b981">'+acc(vhc,vh.length)+'%</div><div class="sl">覆盖'+vh.length+'天</div></div>'+
+    '<div class="sb"><div class="sl">d1 HIGH+</div><div class="sv" style="color:#f59e0b">'+acc(hhc,hh.length)+'%</div><div class="sl">覆盖'+hh.length+'天</div></div>'+
+    '<div class="sb"><div class="sl">信号来源</div><div class="sv" style="color:#fff;font-size:1em">K线形态+主力+量价</div><div class="sl">v13</div></div>';
+
+  const tb = document.getElementById('tbody');
+  DATA.slice().reverse().forEach(r => {
+    const tr = document.createElement('tr');
+    const d = r.d1.pred;
+    const c = d.startsWith('UP') ? 'r' : (d.startsWith('DOWN') ? 'g' : 'm');
+    const chgC = r.d1.actual_chg > 0 ? 'r' : (r.d1.actual_chg < 0 ? 'g' : 'm');
+    const ok = ((d==='UP'&&r.d1.actual_chg>0)||(d==='DOWN'&&r.d1.actual_chg<0)) ? '✅' : '❌';
+    const dev = r.d1.pred_target ? Math.abs((r.d1.actual_close - r.d1.pred_target)/r.d1.pred_target*100) : 0;
+    const devStr = dev > 10 ? '<span class="r">'+dev.toFixed(1)+'%</span>' : dev.toFixed(1)+'%';
+    tr.innerHTML = '<td>'+r.date+'</td><td class="w">'+r.close+'</td><td class="'+c+'" style="font-weight:600">'+d+'</td><td class="'+c+'">'+(r.d1.pred_target||'—')+'</td><td>'+r.d1.actual_close+'</td><td class="'+chgC+'">'+(r.d1.actual_chg>=0?'+':'')+r.d1.actual_chg+'%</td><td>'+ok+'</td><td>'+devStr+'</td><td style="font-size:.68em;color:#6b7280">'+reasonText(r.d1)+'</td>';
+    tb.appendChild(tr);
+  });
+}
+render();
+</script>
+
+</body>
+</html>"
